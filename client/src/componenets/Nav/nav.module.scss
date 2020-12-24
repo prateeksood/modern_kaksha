@@ -1,0 +1,396 @@
+@import '../../resources/styles/theme.module.scss';
+
+
+nav{
+    z-index: 5;
+    font-family: 'Dosis', sans-serif;
+    transition: all 1s;
+}
+.burgerMenu{
+    text-align: center;
+    font-size: 2.5em;
+    display: none;
+    z-index: 12;
+}
+.closeBtn{
+    text-align: right;
+    padding:20px;
+    font-size: 1.5em;
+    display: none;
+}
+.navBar{
+    width:80%;
+    margin:auto;
+}
+.navLinkContainer{
+    display:flex;
+    justify-content: space-around;
+    width:60%;
+    margin: auto;
+    text-transform: uppercase;
+    
+}
+.navLink{
+    font-weight: 700;
+    padding:3px;
+    transition: all .5s;
+    cursor: pointer;
+    a{
+        height: 100%;
+        width: 100%;
+        color:$textColor;
+        transition: all .5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.activeNavLink{
+    padding:3px;
+    border-bottom: 2px solid $accentColor2;
+    a{
+        color: $accentColor2;
+    }
+}
+.navLink:hover{
+    color: $primaryColor;
+    a{
+        color:$primaryColor;
+    }
+}
+.activeNav,.hiddenNav{
+    display: block;
+}
+
+
+// ==========================================================Thin Nav Bar-==================================================
+.thinNav{
+    width:100%;
+    height: 70px;
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+.burgerMenuThinNav{
+    background: $textColor;
+    text-align: right;
+    padding-right: 30px;
+    font-size: 2.5em;
+    display: none;
+    z-index: 3;
+    svg{
+        path{
+            fill:$textColorLight;
+        }
+    }
+}
+.thinNavHolder{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    background: $textColor;
+    .titleHolder{
+        width: 25%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        background: $primaryColor;
+        overflow: hidden;
+        padding-left: 10px;
+        img{
+            height:100%;
+            transition: all 1s;
+        }
+        img:hover{
+            transform: scale(1.1) translateY(-2px);
+        }
+    }
+    .thinNavTitle{
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        color: $accentColor2;
+        font-weight: 600;
+        text-shadow: 1px 5px 5px rgba(150, 150, 150, 1);
+    }
+    .thinNavLinkContainer{
+        width:50%;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: flex-end;
+        background: $textColor;
+        .profileLink{
+            transition: all .5s;
+            background: $accentColor2;
+            transition: all .5s;
+            color:$primaryColor;
+            svg{
+                margin-right: 10px;
+                path{
+                    fill:$primaryColor;
+                    transition: all .5s;
+                }
+            }
+        }
+        .profileLink:hover{
+            background: $primaryColor;
+            svg{
+                path{
+                    fill:$accentColor2;
+                }
+            }
+                color: $accentColor2;
+        }
+        .navLink{
+            height: 100%;
+            width:25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            
+        }
+        .navLink a{
+            color:$textColorLight;
+        }
+        div:hover{
+            color:$accentColor2;
+            a{
+                color:$accentColor2;
+            }
+        }
+    }
+}
+.hiddenThinNav{
+    display:none;
+}
+.profileSubMenu{
+        width:200px;
+        position: absolute;
+        right: 20px;
+        margin-top: 20px;
+        .triangleTip{
+        width:20px;
+        height: 20px;
+        border:10px solid transparent;
+        border-bottom:10px solid $primaryColor;
+        position: absolute;
+        right: 10px;
+        top:-20px;
+    }
+    .profileSubMenuItemHolder{
+        background-color: $primaryColor;
+        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        padding: 20px;
+        
+    }
+    .subLink{
+        font-size: 1.2em;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        padding:5px 0;
+        border-bottom: 2px solid $lightGrey;
+        color:$accentColor2;
+        cursor: pointer;
+        transition: all .5s;
+        a{
+            color: $accentColor2;
+        }
+    }
+    .subLink:hover{
+        transform: scale(.9);
+    }
+    
+}
+.mobileOnlyNavLink{
+    display: none;
+}
+
+
+.errorBanner{
+    background-color: rgba(255,0,0,0.6);
+    padding: 10px 5px;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    div{  
+        width: 95%;
+        text-align: center;
+        color:$primaryColor;
+    }
+    span{
+        width: 5%;
+        height: 100%;
+        text-align: center;
+        color: $primaryColor;
+        font-weight: 900;
+    }
+}
+.activeThinNavLink{
+    color:$accentColor2;
+    font-size:1.3em;
+    border-bottom: 1px solid $accentColor2;
+}
+@media only screen and (max-width: 900px){
+    .thinNav{
+        position:sticky;
+        top:0;
+    }
+    .activeNavLink{
+        font-size:2em;
+    }
+    .activeThinNavLink{
+        font-size:2em;
+    }
+    .mobileOnlyNavLink{
+        display: block;
+        font-weight: 700;
+        padding:3px;
+        transition: all .5s;
+        cursor: pointer;
+        color:$textColor;
+        transition: all .5s;
+        padding:15px 0;
+        transition: all .6s;
+        a{
+            color:$textColor;
+            transition: all .5s;
+        }
+    }
+    .mobileOnlyNavLink:hover{
+        color:$primaryColor;
+        a{
+            color: $primaryColor;
+        }
+    }
+    .profileLink{
+        display: none;
+    }
+    .profileSubMenu{
+        display: none;
+    }
+    .thinNavHolder{
+        .thinNavTitle{
+            font-size: 1em;
+        }
+        .thinNavLinkContainer{
+            width:50%;
+        }
+        .titleHolder{
+            width: 50%;
+            padding-left: 20px;
+            img{
+                height:50%;
+            }
+        }
+    }
+    
+    .nav{
+        width:100%;
+        height:100vh;
+        background-image: $backgroundGradient;
+        position: fixed;
+        top: 0;
+        left:0;
+        z-index: 10;
+    }
+    .navBar{
+        width:100%;
+    }
+    .navLinkContainer{
+        flex-direction: column;
+        width:100%;
+        height: 100%;
+        text-align: center;
+        justify-content: space-between;
+        padding-bottom: 70px;
+        .navLink{
+            padding:15px 0;
+            transition: all .6s;
+        }
+    }
+    .burgerMenu, .burgerMenuThinNav{
+        display: block;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        padding-right:30px;
+        svg{
+            path{
+            transition: all .6s;
+        }
+        }
+    }
+    .burgerMenu, .burgerMenuThinNav{
+        svg:hover{
+            path{
+                fill:$accentColor2;
+            }
+        }
+    }
+    .activeNav{
+        transform: translateX(0);
+        transition: all 1s;
+        width:100%;
+        height:100vh;
+        background-image: $backgroundGradient;
+        position: fixed;
+        top: 0;
+        left:0;
+        z-index: 10;
+    }
+    .hiddenNav{
+        transform: translateX(1000px);
+        transition: all .5s;
+        width:100%;
+        height:100vh;
+        background-image: $backgroundGradient;
+        position: fixed;
+        top: 0;
+        left:0;
+        z-index: 10;
+        flex-direction: column;
+    }
+    
+    .activeNavLink{
+        color:$primaryColor;
+        border: 0;
+        a{
+            color:$primaryColor;
+        }
+    }
+    .activeThinNavLink{
+        padding:3px;
+        border-bottom: 0;
+        a{
+            color: $accentColor2;
+        }
+    }
+    .navLink:hover{
+        color:$textColorLight;
+        border:0
+    }
+    .closeBtn{
+        display: block;
+        text-align: right;
+        margin-right: 20px;
+        svg{
+            transform: rotate(45deg);
+            cursor: pointer;
+            font-size: 1.5em;
+            path{
+                transition: all .6s;
+            }
+        }
+        svg:hover{
+            path{
+                fill:$textColorLight;
+            }
+        }
+    }
+}

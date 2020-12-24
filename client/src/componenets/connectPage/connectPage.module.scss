@@ -1,0 +1,244 @@
+@import '../../resources/styles/theme.module.scss';
+
+.connectPage{
+    min-height: 100vh;
+    padding:50px 0;
+    background-color: $accentColor2;
+    text-align: center;
+    h2{
+        color:$primaryColor;
+    }
+
+}
+.filterBar{
+    display: none;
+}
+.container{
+    width:80%;
+    min-height: 100vh;
+    display: flex;
+    margin: 20px auto;
+    
+}
+.cardHolder{
+    display: flex;
+    justify-content: space-around;
+    width:75%;
+    margin:20px auto;
+    flex-wrap: wrap;
+    min-height: 80vh;
+    
+}
+.notFoundMsgHolder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:75%;
+    margin:20px auto;
+    flex-wrap: wrap;
+    min-height: 70vh;
+    .notFoundMsg{
+        color: $primaryColor;
+        font-size: 2em;
+    }
+}
+.filterTopBar{
+    display: flex;
+    width: 100%;
+    .emptySpan{
+        width:20%;
+    }
+    .filterHeading{
+        font-size: 2em;
+        font-weight: 600;
+        width: 60%;
+        text-align: center;
+    }
+    .crossSign{
+        display: none;
+        width:20%;
+        text-align: center;
+        font-size: 2em;
+        di
+        svg{
+            cursor: pointer;
+        }
+    }
+    .crossSign{
+        svg:hover{
+            path{
+                fill:$accentColor2;
+            }
+        }
+    }
+}
+.filterHolder{
+    background:$primaryColor;
+    width: 25%;
+    min-height:100vh;
+    margin: 20px;
+    border-radius: 5px;
+    padding:30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:30px;
+    .filterSection{
+        width: 100%;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .filterSecHead{
+            color:$accentColor2;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-align: left;
+            padding-top:20px;
+        }
+        p{
+            padding-bottom: 20px;
+            font-size: .7em;
+        }
+        .inputHolder{
+            display: flex;
+            flex-direction: column;
+            div{
+                display: flex;
+                align-items: center;
+                input{
+                    margin-right:10px ;
+                }
+            }
+        }
+        .feeRangeHolder{
+            display: flex;
+            flex-wrap:wrap;
+            margin-top: 10px;
+            div{
+                input{
+                    width:80px;
+                    height: 30px;
+                    padding:10px;
+                    margin: 10px;
+                    outline: none;
+                    border: 2px solid $accentColor2;
+                    border-radius: 5px;
+                }
+            }
+        }
+        .dropDownHolder{
+            width:170px;
+        }
+        .dropDownHolder>div{
+            width:100%;
+            outline: none;
+            border: 2px solid $accentColor2;
+            border-radius: 5px;
+        }
+        .pincodeInputHolder{
+            margin-bottom: 10px;
+            input{
+                height:30px;
+                width:170px;
+                border-radius: 5px;
+                border:2px solid $accentColor2;
+                padding: 10px;
+            }
+        }
+    }
+}
+.loadMoreBtn{
+    display: flex;
+    width:80%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-right: 40px;
+    div{
+        border-radius: 10px;
+        padding: 5px 10px;
+        font-size: 1.5em;
+        color:$primaryColor;
+        width: 30%;
+        box-shadow:0 19px 38px rgba(0,0,0,0.30);
+        cursor: pointer;
+    }
+    div:hover{
+        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+    }
+}
+input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+@media only screen and (max-width: 900px){
+    .connectPage{
+        padding-bottom: 0;
+    
+    }
+    .cardHolder{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+    }
+    .container{
+        width:100%;
+        margin: auto;
+    }
+    .hideFilters{
+        display: none;
+        
+    }
+    .showFilters{
+        position: fixed;
+        width:100%;
+        min-height: 100vh;
+        top:70px;
+        margin: 0;
+        z-index: 10;
+        overflow-y:scroll;
+        overflow-x:hidden;
+        padding-bottom: 100px;
+    }
+    .filterBar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        position: sticky;
+        bottom: 0;
+        height:50px;
+        width:100%;
+        background: $primaryColor;
+        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        cursor: pointer;
+    }
+    .filterTopBar{
+        .filterHeading{
+            width: 80%;
+        }
+        .crossSign{
+            transform: rotate(45deg);
+            display: block;
+        }
+    }
+    .loadMoreBtn{
+        width:100%;
+        padding: 20px;
+        div{
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-size: 1.5em;
+            color:$primaryColor;
+            width: 100%;
+            box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+    }
+}

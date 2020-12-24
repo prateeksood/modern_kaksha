@@ -1,0 +1,115 @@
+@import '../../resources/styles/theme.module.scss';
+
+.footer{
+    // min-height: 50vh;
+    background-color: $textColor;
+    color:$textColorLight;
+    padding: 50px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.upperSection{
+    // height:40vh;
+    display: flex;
+    justify-content: space-around;
+    padding:20px;
+    h4{
+        margin: 30px 0;
+    }
+}
+
+.footerAbout{
+    max-width:400px;
+    h4,p{
+        color:$textColorLight;
+    }
+    p{
+        color: $accentColor;
+    }
+}
+.footerAddress{
+    max-width:250px;
+    h4,p{
+        color:$textColorLight;
+    }
+    p{
+        color: $accentColor;
+    }
+}
+.footerContact{
+    max-width: 250px;
+    ul{
+        // text-align: center;
+        list-style: none;
+    }
+    li,h4{
+        color:$textColorLight;
+    }
+    li{
+        padding: 5px;
+        a{
+            color: $accentColor;
+            text-decoration: underline;
+        }
+        color: $accentColor;
+    }
+}
+.footerQuickLinks{
+    max-width: 250px;
+    ul{
+        text-align: center;
+        list-style: none;
+    }
+    li,h4{
+        color:$textColorLight;
+    }
+    li{
+        padding: 5px;
+        a{
+            color: $accentColor;
+            text-decoration: underline;
+        }
+        color: $accentColor;
+    }
+}
+.lowerSection{
+    color:$textColorLight;
+    text-align: center;
+    svg{
+        path{
+            fill: $textColorLight;
+        }
+    }
+}
+.developerDetails{
+    font-size: .8em;
+    color:$accentColor;
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg{
+        font-size: 2em;
+        margin-left: 15px;
+        path{
+            fill:$primaryColor;
+        }
+    }
+}
+@media only screen and (max-width: 900px){
+    .footer{
+        min-height: 120vh;
+    }
+    .upperSection{
+        flex-direction: column;
+        // padding-top: 70px;
+    }
+    .footerQuickLinks{
+        max-width: 250px;
+        ul{
+            text-align: left;
+        }
+    }
+}

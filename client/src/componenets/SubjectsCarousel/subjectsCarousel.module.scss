@@ -1,0 +1,123 @@
+@import '../../resources/styles/theme.module.scss';
+
+
+.quickLinks{
+    background:$primaryColor;
+    text-align: center;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+.carousel{
+    display:flex;
+    align-items: center;
+    padding: 50px 0;
+    width: 80%;
+    margin: auto;
+    .arrow{
+    font-size: 4em;
+    cursor: pointer;
+    }
+    svg{
+        path{
+            fill: $accentColor;
+        }
+    }
+}
+
+.arrow:hover{
+    svg{
+        path{
+            fill: $accentColor2;
+        }
+    }
+}
+    
+
+.cardHolder{
+    display:flex;
+    margin: auto;
+    overflow-x:auto;
+    padding:20px 0;
+    scroll-behavior: smooth;
+}
+.cardHolder::-webkit-scrollbar {
+    display: none;
+  }
+.card{
+    cursor: pointer;
+    height:350px;
+    min-width:300px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin: 0 20px;
+    background: $accentColor2;
+    box-shadow: inset 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    transition: all 1s;
+}
+.card:hover{
+    background-color: #184b67;
+    .cardIcon{
+        font-size: 9.5em;
+    }
+}
+.cardIcon{
+    font-size: 9em;
+    padding-top:30px;
+    transition: all 1s;
+    svg{
+        path{
+            fill: $textColorLight;
+        }
+    }
+}
+
+.cardTitle{
+    color: $accentColor2;
+    font-size: 2em;
+    background: $textColorLight;
+    padding: 20px 0;
+    border-radius: 0 0 10px 10px;
+}
+.cardHolder[data-goleftanimation='1'] {
+    .card{
+        animation: animateLeft 1s 1;
+        transition:all 1s ;
+    }
+  }
+  .cardHolder[data-gorightanimation='1'] {
+    .card{
+        animation: animateRight 1s 1;
+        transition:all 1s ;
+    }
+  }
+  @keyframes animateLeft {
+    100% {
+      transform: translateX(-250px);
+    }
+  }
+  @keyframes animateRight {
+    100% {
+      transform: translateX(300px);
+    }
+  }
+
+  @media only screen and (max-width: 900px){
+    .arrow{
+        display: none;
+    }
+}
+@media only screen and (max-width: 400px){
+    .card{
+        height:300px;
+        min-width:225px;
+    }
+    .cardIcon{
+        font-size: 6em;
+        padding-top:40px;
+    }
+    .cardTitle{
+        font-size: 1.2em;
+    }
+}

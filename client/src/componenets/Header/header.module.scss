@@ -1,0 +1,50 @@
+@import '../../resources/styles/theme.module.scss';
+header{
+    background:transparent;
+}
+.siteBanner{
+    
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    width: 80%;
+    padding:50px 0;
+}
+
+.logo{
+    img{
+        height:120px;
+    }
+    
+}
+
+
+.siteTitle{
+
+    display:flex;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 4em;
+    // color: $accentColor2;
+}
+
+@media only screen and (max-width: 900px){
+    .siteBanner{
+        flex-direction: column;
+        padding:10px 0;
+    }
+    .logo{
+        img{
+            height:80px;
+        }
+        
+    }
+    .siteTitle{ 
+        font-size: 1.5em;
+        // color: $tex;
+        text-shadow: 1px 5px 9px rgba(100, 100, 100, 1);
+    }
+}

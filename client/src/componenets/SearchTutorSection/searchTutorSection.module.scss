@@ -1,0 +1,133 @@
+@import '../../resources/styles/theme.module.scss';
+
+
+.searchTutorSection{
+    background:$primaryColor;
+    // position: relative;
+}
+.searchHolder{
+    display:flex;
+    flex-direction: row;
+    height:100px;
+    width:80%;
+    margin:auto;
+    background: $accentColor;
+    transform: translateY(-50px);
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30);
+
+}
+.searchSecHead,.pinCode,.subjects,.searchBtn{
+    width:25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchSecHead{
+    background: #696869;
+    flex-direction: column;
+    .mainText{
+        font-size: 2em;
+        color: $textColorLight;
+    }
+    .followText{
+        font-size: 1em;
+        color: $accentColor;
+    }
+}
+
+.pinCode{
+    input{
+        width:80%;
+        height:40px;
+        border-radius: 5px;
+        outline: none;
+        border:2px solid $accentColor2;
+    }
+
+}
+
+.subjects>div{
+    
+        background: $primaryColor;
+        border-radius: 5px;
+        width: 80%;
+        border:2px solid $accentColor2;
+        outline: none;
+}
+.searchBtn div{
+    display: inline-block;
+    font-size: 1.2em;
+    width:80%;
+    text-align: center;
+    padding: 6px 0;
+    color:$textColorLight;
+    background: $accentColor2;
+    border-radius: 5px;
+}
+.searchBtn div:hover{
+    box-shadow:1px 1px 5px $accentColor2;
+}
+.searchBtn div:active{
+    transform: scale(0.98);
+}
+@media only screen and (max-width: 900px){
+    .searchHolder{
+        display:flex;
+        flex-direction: row;
+        height:100px;
+        width:100%;
+        margin:auto;
+        background: $accentColor;
+        transform: translateY(-50px);
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30);
+    
+    }
+    .searchSecHead{
+        .mainText{
+            font-size: 1em;
+        }
+        .followText{
+            font-size: .7em;
+        }
+    }
+    .searchBtn div{
+        font-size: 1em;
+        width: 70%;
+        padding: 10px 0;
+
+    }
+}
+@media only screen and (max-width: 600px){
+    .searchHolder{
+        flex-direction: column;
+        transform: translateY(0);
+        height:300px;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .searchSecHead,.pinCode,.subjects,.searchBtn{
+        width:70%;
+    }
+    .searchSecHead{
+        .mainText{
+            font-size: 1em;
+        }
+        .followText{
+            font-size: .8em;
+        }
+    }
+    .pinCode{
+        input{
+            width:100%;
+        }
+    
+    }
+    .subjects>div{
+        width: 100%;
+    }
+    .searchBtn a{
+        font-size: .7em;
+        width: 70%;
+        padding: 10px 0;
+    }
+}

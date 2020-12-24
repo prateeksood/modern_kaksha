@@ -1,0 +1,17 @@
+@import '../../resources/styles/theme.module.scss';
+
+.msgBanner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    width:100%;
+    background:rgba(0,0,0,0.8);
+    position: fixed;
+    box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    bottom: 0;
+    .message{
+        text-align: center;
+        color:$primaryColor ;
+    }
+}

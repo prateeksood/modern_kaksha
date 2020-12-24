@@ -1,0 +1,86 @@
+@import '../../resources/styles/theme.module.scss';
+
+.pageNotFoundErrorPage{
+    height: 80vh;
+    background: $accentColor2;
+    padding:50px 0;
+}
+.errorHolder{
+    width:80%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ErrorMsg{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1{
+            font-size: 10em;
+            color:$primaryColor;
+            animation: animateMsg 5s infinite;
+            transition: all 1s;
+        }
+        p{
+            color: $lightGrey;
+            font-size: 3em;
+            margin-bottom: 50px;
+        }
+        .goHomeBtn{
+            transition: all .5s;
+            box-shadow:0 19px 38px rgba(0,0,0,0.30);
+            a{
+                color:$primaryColor;
+                padding:5px 10px;
+                font-size: 2em;
+                border: 2px solid $primaryColor;
+                border-radius: 10px;
+                width:120px;
+                cursor: pointer;
+            }
+        }
+        .goHomeBtn:hover{
+            transform: scale(.99);
+            box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+    }
+}
+@keyframes animateMsg{
+    0%{
+        transform: scale(.98);
+    }
+    25%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(.98);
+    }
+    75%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(.98);
+    }
+}
+
+@media only screen and (max-width:900px){
+    .errorHolder{
+        width:95%;
+        .ErrorMsg{
+            text-align: center;
+            h1{
+                font-size: 6em;
+            }
+            p{
+                font-size: 2em;
+            }
+            .goHomeBtn{
+                a{
+                    font-size: 1.5em;
+                    width:100px;
+                }
+            }
+        }
+    }
+}

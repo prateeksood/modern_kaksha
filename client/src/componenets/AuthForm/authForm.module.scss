@@ -1,0 +1,237 @@
+@import '../../resources/styles/theme.module.scss';
+
+.ImgConatiner{
+    background-image: $primaryColor;
+    min-height:100vh;
+    width:100%;
+    position:fixed;
+    top:0;
+    left: 0;
+    z-index: -10;
+}
+.registerForm{
+    min-height:100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+}
+.imgContainer{
+    background:$primaryColor;
+    height:100vh;
+    width:100%;
+    position: fixed;
+    top:0;
+    z-index:-10;
+}
+.accountTypeHolder{
+    width:76%;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    padding:4px;
+    background: $primaryColor;
+    border-radius: 10px 10px 0 0;
+    box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    .activeType{
+        border:2px solid $accentColor2;
+        background-color: $accentColor2;
+        color: $primaryColor;
+        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+    span{
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 5px 10px;
+        width: 50%;
+        text-align: center;
+        transition: all .5s;
+    }
+    span:hover{
+        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        transform: scale(.99);
+    }
+}
+.formHolder{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    
+    form{
+        width:95%;
+        max-width: 400px;
+        padding:50px;
+        background: $primaryColor;
+        border-radius:0 0 10px 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        h3{
+            text-align: center;
+            color:$accentColor2;
+            font-size: 1.8em;
+        }
+        .inputContainer{
+            margin-top: 50px;
+        }
+        p{
+            span{
+                color:$accentColor2;
+                cursor: pointer;
+            }
+        }
+        #multiselectContainerReact{
+            border:12px solid red;
+        }
+    }
+}
+.inputHolder,.checkboxHolder,.radioLabelHolder{
+    label{
+        font-weight: 600;
+    }
+}
+.dropdownHolder{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    width:100%;
+    
+    label{
+        font-weight: 600;
+    }
+    .validationError{
+        padding:5px;
+        border:0px;
+        background: $primaryColor;
+        width:100%;
+        outline: none;
+        transition: all .5s;
+        border-bottom: 2px solid red;
+    }
+}
+.dropdownHolder>div{
+        width: 100%;
+}
+.inputHolder{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    width:100%;
+    p{
+        font-size: .7em;
+    }
+    label{
+        padding: 5px 0;
+        text-align: left;
+    }
+    .inputBox{
+        padding:5px;
+        border:0px;
+        border-bottom: 2px solid $accentColor;
+        background: $primaryColor;
+        width:100%;
+        outline: none;
+        transition: all .5s;
+    }
+    .inputBox:focus{
+        border-bottom: 2px solid $accentColor2;
+    }
+    input[type="submit"]{
+        border-radius: 5px;
+        background: $accentColor2;
+        width:100%;
+        outline: none;
+        border:0;
+        padding:15px 0;
+        color:$textColorLight;
+        margin-top: 15px;
+        cursor: pointer;
+        box-shadow: 0 15px 12px rgba(0,0,0,0.22);
+        transition:all .5s;
+    }
+    input[type="submit"]:disabled{
+        background: #1c2a31;
+        cursor:not-allowed
+    }
+    input[type="submit"]:hover{
+        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        transform: scale(0.99);
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    input[type=number] {
+    -moz-appearance: textfield;
+    }
+    .validationError{
+        padding:5px;
+        border:0px;
+        background: $primaryColor;
+        width:100%;
+        outline: none;
+        transition: all .5s;
+        border-bottom: 2px solid red;
+    }
+    
+}
+.errorMsg{
+    color:red;
+    font-size: .7em;
+}
+.checkboxHolder{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 0;
+
+    input{
+        margin-right:10px;
+        cursor: pointer;
+    }
+}
+.radioLabelHolder{
+    text-align: left;
+    padding:15px 0 5px 0;
+}
+.radioBtnHolder{
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    input{
+        margin-right: 10px;
+    }
+}
+.validationError{
+    border-bottom: 2px solid red;
+}
+@media only screen and (max-width:900px){
+    
+    .inputHolder,.checkboxHolder,.radioLabelHolder{
+        label{
+            font-size: .7em;
+            span{
+                color:$accentColor2;
+            }
+        }
+    }
+    .checkboxHolder,.radioBtnHolder{
+        label{
+            font-size: .6em;
+        }
+    }
+    .formHolder{
+        h3{
+            font-size: 1.5em;
+        }
+        form{
+            padding:50px 25px;
+        }
+    }
+}

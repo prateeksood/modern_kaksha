@@ -1,0 +1,320 @@
+@import '../../resources/styles/theme.module.scss';
+
+.profilePage{
+    position: relative;
+    min-height:100vh;
+    width: 100%;
+    background-color: $accentColor2;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+.profileHolder{
+    padding: 40px 0;
+    height:80%;
+    width: 80%;
+    background: $primaryColor;
+    border-radius: 10px;
+}
+.activeStar{
+    svg{
+        path{
+            fill:$accentColor2;
+        }
+    }
+}
+.topHalf{
+    height:50%;
+    display: flex;
+    padding: 40px 40px 0 40px;
+
+    .imageHolder{
+        width:25%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 40px;
+        img{
+            width: 100%;
+            height:100%;
+            background: $lightGrey;
+        }
+    }
+    
+    .mainDetails{
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 2px solid $lightGrey;
+        .profileName{
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+        .ratingContainer{
+            font-size: 2.5em;
+            margin: 10px 0;
+            display: flex;
+        }
+        
+        .skillConatiner{
+            display: flex;
+            flex-wrap: wrap;
+            .skill{
+                font-size: .6em;
+                margin: 0 10px 10px 0;
+                color:$accentColor2;
+                border: 2px solid $accentColor2;
+                border-radius: 5px;
+                padding:5px 10px;
+                
+            }
+        }
+        .reportBtn{
+            display: flex;
+            justify-content: flex-end;
+            span{
+                font-size: .8em;
+                margin: 10px 0;
+                cursor: pointer;
+                color:red;
+                border: 2px solid red;
+                border-radius: 5px;
+                padding:5px 10px;
+            }
+            span:hover{
+                transform: scale(.99);
+                box-shadow:1px 1px 5px ;
+            }
+        }
+    }
+}
+.secBelowPic{
+    width:25%;
+}
+.reportForm{
+    display: flex;
+    padding: 10px 40px 40px 40px;
+    .formHolder{
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 2px solid $lightGrey;
+        padding-bottom: 20px;
+        .reportFormHeading{
+            color: $accentColor2;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        label{
+            font-weight: 600;
+        }
+        select,textarea,input{
+            width:300px;
+            border-radius: 5px;
+            padding:10px;
+            border:2px solid $accentColor2;
+            margin: 10px 0;
+            outline: none;
+        }
+        input{
+            color:$primaryColor;
+            background: $accentColor2;
+        }
+    }
+}
+.middleSection{
+    display: flex;
+    padding: 10px 40px 40px 40px;
+    .connectionsHolder{
+        .connectionsFormHeading{
+            text-align: center;
+            color: $accentColor2;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+    }
+}
+.bottomHalf{
+    height:50%;
+    display: flex;
+    padding: 10px 40px 40px 40px;
+    
+    .bottomInfoContainer{
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        .contactInfoHeading{
+            color: $accentColor2;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .contactInfoHolder{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            margin-bottom: 30px;
+            div{
+                display: flex;
+                margin-top: 5px;
+                .infoHead{
+                    font-weight: 600;
+                    margin-right: 10px;
+                }
+            }
+        }
+        .reviewSecHeading,.submitReviewHeading{
+            font-size: 2em;
+            color: $accentColor2;
+            margin: 10px 0;
+        }
+        .reviewHolder{
+            background-color: $lightGrey;
+            padding:20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            .review{
+                background-color: $primaryColor;
+                margin-bottom: 20px;
+                border-radius:5px ;
+            }
+            .reviewHead{
+                color: $accentColor2;
+                font-size: 1.2em;
+                font-weight: 500;
+                padding:10px;
+                border-bottom: 2px solid $lightGrey;
+                display: flex;
+            }
+            .reviewBody{
+                padding:10px;
+                .reviewer{
+                    color: $accentColor2;
+                    font-size: .9em;
+                    margin-bottom: 10px;
+                    svg{
+                        path{
+                            fill:$accentColor2;
+                        }
+                        margin-right:5px;
+                    }
+                }
+            }
+        }
+        .submitReviewSec{
+            padding:0 20px 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            .ratingForm{
+                display:flex;
+                font-size: 2.5em;
+            }
+            label{
+                font-weight: 600;
+            }
+            input[type='text']{
+                width:300px;
+                margin: 10px 0;
+                padding:10px;
+                border-radius: 5px;
+                border:2px solid $accentColor2;
+            }
+            textarea{
+                padding: 5px;
+                width:300px;
+                margin: 10px 0;
+                border-radius: 5px;
+                border:2px solid $accentColor2;
+            }
+            input[type='submit']{
+                width:300px;
+                margin: 10px 0;
+                padding:10px ;
+                color:$primaryColor;
+                background: $accentColor2;
+                border:0;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            input:focus,textarea:focus{
+                outline: none;
+            }
+        }
+    }
+    
+}
+.errorMsg{
+    color:red;
+    font-size: .7em;
+}
+@media only screen and (max-width:900px){
+    .topHalf{
+        flex-direction: column;
+        align-items: center;
+        .imageHolder{
+            width: 100%;
+            padding-right: 0;
+        }
+        .mainDetails{
+            width: 100%;
+            text-align: center;
+            .reportBtn{
+                justify-content: center;
+            }
+            .ratingContainer{
+                font-size: 2em;
+                justify-content: center;
+
+            }
+        }
+        .skillConatiner{
+            justify-content: center;
+        }
+        
+    }
+    .secBelowPic{
+        width:0;
+    }
+    .reportForm{
+        padding: 10px;
+            .formHolder{
+            width: 100%;
+            align-items: center;
+            .reportFormHeading{
+                text-align: center;
+            }
+            select,textarea,input{
+                width:100%;
+                max-width: 300px;
+            }
+        }
+    }
+    .bottomHalf{
+        height:50%;
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        
+    .bottomInfoContainer{
+        width: 95%;
+        .contactInfoHeading,.reviewSecHeading,.submitReviewHeading{
+            text-align: center;
+        }
+        .contactInfoHolder{
+            div{
+                flex-direction: column;
+            }
+        }
+        .submitReviewSec{
+            padding:0;
+            align-items: center;
+            input[type='text'],input[type='submit'],textarea{
+                width:100%;
+                max-width: 300px;
+            }
+        }
+    }
+        
+    }
+}

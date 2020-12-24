@@ -1,0 +1,104 @@
+@import '../../resources/styles/theme.module.scss';
+
+.signinSection{
+    height:700px;
+    // width:;
+    position: relative;
+    margin-top:150px;
+    display:flex;
+}
+.studentSection,.tutorSection{
+    background: $accentColor2;
+    height: 100%;
+    width:50%;
+    display:flex;
+    flex-direction: column;
+
+}
+.studentSection{
+    background: $accentColor2;
+    color:$textColor;
+    .alreadyRegisteredText{
+        color:$textColorLight;
+        a{
+            color: $textColor;
+        }
+        span{
+            color:$textColor;
+        }
+    }
+}
+.tutorSection{
+    background: $textColor;
+    color:$accentColor2;
+    .alreadyRegisteredText{
+        color:$textColorLight;
+        a{
+            color: $accentColor2;
+        }
+        span{
+            color:$accentColor2;
+        }
+    }
+}
+.content{
+    width:90%;
+    margin:auto;
+    text-align: center;
+    padding:100px 0;
+}
+.studentSecHead{
+    font-size: 4em;
+}
+.tutorSecHead{
+    font-size: 4em;
+    color:$accentColor2;
+}
+.studentRegisterBtn, .tutorRegisterBtn{
+    margin-top:30px;
+}
+.studentRegisterBtn a, .tutorRegisterBtn a{
+    font-size: 2em;
+    padding: 10px;
+    border:2px solid;
+    border-radius: 10px;
+    margin-top:30px;
+    display: inline-block;
+}
+.studentRegisterBtn a{
+    color:$textColor;
+    
+}
+
+.tutorRegisterBtn a{
+    color:$accentColor2;
+}
+.studentRegisterBtn a:hover,.tutorRegisterBtn a:hover, .studentRegisterBtn a:active{
+    box-shadow:1px 1px 5px ;
+}
+.studentRegisterBtn a:active,.tutorRegisterBtn a:active{
+    box-shadow:1px 1px 5px ;
+    transform: scale(0.98);
+}
+.alreadyRegisteredText{
+    margin-top: 30px;
+}
+@media only screen and (max-width: 900px){
+    .signinSection{
+        flex-direction: column;
+        height: 120vh;
+    }
+    .studentSection,.tutorSection{
+        width:100%;
+        height: 50%;
+    }
+    .content{
+        padding:20px 0;
+    }
+    .studentSecHead,.tutorSecHead{
+        font-size: 2em;
+    }
+    .studentRegisterBtn a, .tutorRegisterBtn a{
+        font-size: 1.3em;
+    }
+}

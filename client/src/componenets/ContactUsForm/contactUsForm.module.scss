@@ -1,0 +1,156 @@
+@import '../../resources/styles/theme.module.scss';
+
+.contactUsForm{
+    min-height: 80vh;
+    background: $accentColor2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+    h2{
+        color:$primaryColor;
+    }
+    .mainContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;;
+        margin: 20px auto;
+        height: 700px;
+        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        .infoSection{
+            width: 40%;
+            background: $textColor;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .infoHolder{
+                .singleInfoContainer{
+                    display: flex;
+                    align-items: center;
+                    padding: 20px;
+                    svg{
+                        font-size: 2em;
+                        background-color: $primaryColor;
+                        padding: 10px;
+                        border-radius: 50%;
+                        margin-right: 20px;
+                        path{
+                            color:$accentColor2;
+                        }
+                    }
+                    div{
+                        display: flex;
+                        flex-direction: column;
+                        .infoHeader{
+                            color:$accentColor2;
+                        }
+                        .info{
+                            color: $primaryColor;
+                            a{
+                                color: $primaryColor;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        .formHolder{
+            width: 60%;
+            background-color: $primaryColor;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            form{
+                width: 60%;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                .inputHolder{
+                    display: flex;
+                    flex-direction: column;
+                    padding: 20px;
+                    label{
+                        color:$accentColor2;
+                    }
+                    input{
+                        padding:5px 10px;
+                        border:none;
+                        outline: none;
+                        border-bottom: 2px solid $textColor;
+                        background-color: transparent;
+                        transition: all .5s;
+                    }
+                    input:focus{
+                        border-bottom: 2px solid $accentColor2;
+                    }
+                    textarea{
+                        padding:5px 10px;
+                        outline: none;
+                        background-color: $primaryColor;
+                        border:2px solid $textColor;
+                        transition: all .5s;
+                    }
+                    .validationError{
+                        border-bottom: 2px solid red;
+                    }
+                    .validationError:focus{
+                        border-bottom: 2px solid red;
+                    }
+                    .textAreaValidationError{
+                        border: 2px solid red;
+                    }
+                    .textAreaValidationError:hover{
+                        border: 2px solid red;
+                    }
+                    textarea:focus{
+                        border: 2px solid $accentColor2;
+                    }
+                    input[type='submit']{
+                        background: $accentColor2;
+                        border: none;
+                        border-radius: 5px;
+                        padding:10px;
+                        color:white;
+                        box-shadow:0 19px 38px rgba(0,0,0,0.30);
+                        transition: all .5s;
+                        cursor: pointer;
+                    }
+
+                    input[type='submit']:hover{
+                        box-shadow:0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+                        transform: scale(.97);
+                    }
+                }
+            }
+        }
+    }
+}
+.errorMsg{
+    color:red;
+    font-size: .7em;
+}
+.validationError{
+    border-bottom: 2px solid red;
+}
+
+@media only screen and (max-width:900px){
+    .contactUsForm{
+        .mainContainer{
+            flex-direction: column-reverse;
+            height:fit-content;
+            .infoSection{
+                width: 100%;
+            }
+            .formHolder{
+                width: 100%;
+                form{
+                    width: 90%;
+                }
+            }
+        }
+    }
+}
