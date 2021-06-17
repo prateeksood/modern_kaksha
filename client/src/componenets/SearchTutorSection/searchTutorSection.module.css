@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap");
+.searchTutorSection {
+  background: #F3F3F3;
+}
+
+.searchHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100px;
+  width: 80%;
+  margin: auto;
+  background: #848384;
+  -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+}
+
+.searchSecHead, .pinCode, .subjects, .searchBtn {
+  width: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.searchSecHead {
+  background: #696869;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.searchSecHead .mainText {
+  font-size: 2em;
+  color: #F3F3F3;
+}
+
+.searchSecHead .followText {
+  font-size: 1em;
+  color: #848384;
+}
+
+.pinCode input {
+  width: 80%;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid #2876a0;
+}
+
+.subjects > div {
+  background: #F3F3F3;
+  border-radius: 5px;
+  width: 80%;
+  border: 2px solid #2876a0;
+  outline: none;
+}
+
+.searchBtn div {
+  display: inline-block;
+  font-size: 1.2em;
+  width: 80%;
+  text-align: center;
+  padding: 6px 0;
+  color: #F3F3F3;
+  background: #2876a0;
+  border-radius: 5px;
+}
+
+.searchBtn div:hover {
+  -webkit-box-shadow: 1px 1px 5px #2876a0;
+          box-shadow: 1px 1px 5px #2876a0;
+}
+
+.searchBtn div:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+@media only screen and (max-width: 900px) {
+  .searchHolder {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: 100px;
+    width: 100%;
+    margin: auto;
+    background: #848384;
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+    -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+  }
+  .searchSecHead .mainText {
+    font-size: 1em;
+  }
+  .searchSecHead .followText {
+    font-size: .7em;
+  }
+  .searchBtn div {
+    font-size: 1em;
+    width: 70%;
+    padding: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .searchHolder {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    height: 300px;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .searchSecHead, .pinCode, .subjects, .searchBtn {
+    width: 70%;
+  }
+  .searchSecHead .mainText {
+    font-size: 1em;
+  }
+  .searchSecHead .followText {
+    font-size: .8em;
+  }
+  .pinCode input {
+    width: 100%;
+  }
+  .subjects > div {
+    width: 100%;
+  }
+  .searchBtn a {
+    font-size: .7em;
+    width: 70%;
+    padding: 10px 0;
+  }
+}
+/*# sourceMappingURL=searchTutorSection.module.css.map */

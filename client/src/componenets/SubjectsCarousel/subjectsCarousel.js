@@ -3,8 +3,7 @@ import styles from './subjectsCarousel.module.scss';
 import Aos from 'aos';
 import 'aos/dist/aos.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlask,faCalculator,faGuitar,faSwimmingPool,faArrowAltCircleLeft,faArrowAltCircleRight,faChess, faPalette } from '@fortawesome/free-solid-svg-icons';
-import img1 from '../../resources/images/bg-blue1.jpg'
+import { faFlask,faCalculator,faGuitar,faArrowAltCircleLeft,faArrowAltCircleRight,faPalette, faFont, faBrain, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { subjects } from "../../data/data";
 import { Redirect } from "react-router-dom";
 
@@ -12,7 +11,7 @@ export default () => {
     const [subjectList,setSubjectList]=useState([]); 
     const cardHolder=useRef();
     const handleClick=(title)=>{
-        setSubjectList([title]);
+        setSubjectList([{value:title}]);
     }
     let cards=[
         { 
@@ -27,12 +26,12 @@ export default () => {
             title:'Guitar'
         },
         {
-            icon:faSwimmingPool,
-            title:'Swimming'
+            icon:faFont,
+            title:'English Speaking'
         },
         {
-            icon:faChess,
-            title:'Chess'
+            icon:faBrain,
+            title:'Psychology'
         },
         {
             icon:faPalette,
@@ -43,10 +42,15 @@ export default () => {
     const goRight=()=>{
         cardHolder.current.scrollLeft+=300;
     }
+    const goRightMobile=()=>{
+        cardHolder.current.scrollLeft+=265;
+    }
     const goLeft=()=>{
         cardHolder.current.scrollLeft-=300;
     }
-
+    const goLeftMobile=()=>{
+        cardHolder.current.scrollLeft-=265;
+    }
     useEffect(()=>{
         Aos.init({duration:2000})
       },[])
@@ -63,6 +67,7 @@ export default () => {
         <h2 className={styles.quickLinksTitle} >Quick Links</h2>
         <div className={styles.carousel}>
         <div onClick={goLeft} className={styles.arrow}><FontAwesomeIcon icon={faArrowAltCircleLeft}/></div>
+        <div onClick={goLeftMobile} className={styles.arrowMobile}><FontAwesomeIcon icon={faAngleLeft}/></div>
             <div className={styles.cardHolder} ref={cardHolder}>
                 {cards.map((card,i)=>(
                     <div key ={i} className={styles.card} data-aos='fade-in' data-aos-delay={`${i*200}`} onClick={()=>handleClick(card.title)}>
@@ -72,6 +77,7 @@ export default () => {
                 ))} 
             </div>
             <div onClick={goRight} className={styles.arrow}><FontAwesomeIcon icon={faArrowAltCircleRight}/></div>
+            <div onClick={goRightMobile} className={styles.arrowMobile}><FontAwesomeIcon icon={faAngleRight}/></div>
         </div>
     </div>
     </React.Fragment>

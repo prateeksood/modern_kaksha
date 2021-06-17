@@ -7,7 +7,7 @@ const PageNotFoundErrorPage=()=> {
   return (
         <div className={styles.pageNotFoundErrorPage}>
             <Helmet>
-                <title>Page not found | Delta Educators</title>
+                <title>Page not found | Modern Kaksha</title>
                 <meta
                     name="description"
                     content="Page you are looking for does not exist or is moved to another location."

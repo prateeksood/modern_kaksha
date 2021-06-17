@@ -1,0 +1,329 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap");
+.connectPage {
+  min-height: 100vh;
+  padding: 50px 0;
+  background-color: #2876a0;
+  text-align: center;
+}
+
+.connectPage h2 {
+  color: #F3F3F3;
+}
+
+.filterBar {
+  display: none;
+}
+
+.container {
+  width: 80%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px auto;
+}
+
+.cardHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 75%;
+  margin: 20px auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 80vh;
+}
+
+.notFoundMsgHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 75%;
+  margin: 20px auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 70vh;
+}
+
+.notFoundMsgHolder .notFoundMsg {
+  color: #F3F3F3;
+  font-size: 2em;
+}
+
+.filterTopBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.filterTopBar .emptySpan {
+  width: 20%;
+}
+
+.filterTopBar .filterHeading {
+  font-size: 2em;
+  font-weight: 600;
+  width: 60%;
+  text-align: center;
+}
+
+.filterTopBar .crossSign {
+  display: none;
+  width: 20%;
+  text-align: center;
+  font-size: 2em;
+}
+
+.filterTopBar .crossSign di
+svg {
+  cursor: pointer;
+}
+
+.filterTopBar .crossSign svg:hover path {
+  fill: #2876a0;
+}
+
+.filterHolder {
+  background: #F3F3F3;
+  width: 25%;
+  min-height: 100vh;
+  margin: 20px;
+  border-radius: 5px;
+  padding: 30px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 30px;
+}
+
+.filterHolder .filterSection {
+  width: 100%;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.filterHolder .filterSection .filterSecHead {
+  color: #2876a0;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: left;
+  padding-top: 20px;
+}
+
+.filterHolder .filterSection p {
+  padding-bottom: 20px;
+  font-size: .7em;
+}
+
+.filterHolder .filterSection .inputHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.filterHolder .filterSection .inputHolder div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filterHolder .filterSection .inputHolder div input {
+  margin-right: 10px;
+}
+
+.filterHolder .filterSection .feeRangeHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.filterHolder .filterSection .feeRangeHolder div input {
+  width: 80px;
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+  outline: none;
+  border: 2px solid #2876a0;
+  border-radius: 5px;
+}
+
+.filterHolder .filterSection .dropDownHolder {
+  width: 170px;
+}
+
+.filterHolder .filterSection .dropDownHolder > div {
+  width: 100%;
+  outline: none;
+  border: 2px solid #2876a0;
+  border-radius: 5px;
+}
+
+.filterHolder .filterSection .pincodeInputHolder {
+  margin-bottom: 10px;
+}
+
+.filterHolder .filterSection .pincodeInputHolder input {
+  height: 30px;
+  width: 170px;
+  border-radius: 5px;
+  border: 2px solid #2876a0;
+  padding: 10px;
+}
+
+.loadMoreBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+  padding-right: 40px;
+}
+
+.loadMoreBtn div {
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 1.5em;
+  color: #F3F3F3;
+  width: 30%;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.loadMoreBtn div:hover {
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media only screen and (max-width: 900px) {
+  .connectPage {
+    padding-bottom: 0;
+  }
+  .cardHolder {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    margin: auto;
+  }
+  .hideFilters {
+    display: none;
+  }
+  .showFilters {
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    top: 70px;
+    margin: 0;
+    z-index: 10;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 100px;
+  }
+  .filterBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 2em;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background: #F3F3F3;
+    -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+  }
+  .filterTopBar .filterHeading {
+    width: 80%;
+  }
+  .filterTopBar .crossSign {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    display: block;
+  }
+  .loadMoreBtn {
+    width: 100%;
+    padding: 20px;
+  }
+  .loadMoreBtn div {
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 1.5em;
+    color: #F3F3F3;
+    width: 100%;
+    -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+}
+/*# sourceMappingURL=connectPage.module.css.map */

@@ -16,7 +16,7 @@ export default () => {
     <div className={styles.footer} > 
         <div className={styles.upperSection}>
             <div className={styles.footerAbout} data-aos='fade-in'>
-                <h4>A little about Delta Educators</h4>
+                <h4>A little about Modern Kaksha</h4>
                 <p>Quality tutors at affordable personalised prices are available anytime to fit your schedule. We cater to a wide array of subjects covering the extra curricular activities too.</p>
             </div>
             <div className={styles.footerAddress} data-aos='fade-in' data-aos-delay={200}>
@@ -26,8 +26,8 @@ export default () => {
             <div className={styles.footerContact}  data-aos='fade-in' data-aos-delay={400}>
                 <h4>Contact Us</h4>
                 <ul>
-                    <li><a href='mailto:support@deltaeducators.com'>support@deltaeducators.com</a></li>
-                    <li><a href='tel:+918628855283'> +91-8628855283</a></li>
+                    <li><a href='mailto:support@modernkaksha.com'>support@modernkaksha.com</a></li>
+                    <li><a href='tel:+916230960186'> +91-6230960186</a></li>
                 </ul>
             </div>
             <div className={styles.footerQuickLinks}  data-aos='fade-in' data-aos-delay={600}>
@@ -60,16 +60,16 @@ export default () => {
                     <li>
                         <Link to={{
                                 pathname:'/connect',
-                                state:{subjectList:['Chess']}
+                                state:{subjectList:['English Speaking']}
                             }}>
-                                Chess
+                                English Speaking
                         </Link>
                     </li>
                 </ul>
             </div>
         </div>
         <div className={styles.lowerSection}>
-             <FontAwesomeIcon icon={faCopyright}></FontAwesomeIcon> {(new Date).getFullYear()} | All rights reserved Sigma-Study
+             <FontAwesomeIcon icon={faCopyright}></FontAwesomeIcon> {(new Date).getFullYear()} | All rights reserved Modern Kaksha
         </div>
         <div className={styles.developerDetails}>
              For website development contact <a href='mailto:prateeksood123@gmail.com'><FontAwesomeIcon icon={faEnvelope}/></a>

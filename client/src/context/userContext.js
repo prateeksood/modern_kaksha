@@ -32,7 +32,7 @@ export default props => {
       };
       const fetchUser= async ()=>{
         try{
-          const res= await axios.get(`${process.env.REACT_APP_API_URL}/auth/`, config);
+          const res= await axios.get(`/api/auth/`, config);
           setUser(res.data.result);
           setUserLoaded(true);
         }

@@ -1,0 +1,319 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap");
+.ImgConatiner {
+  background-image: #F3F3F3;
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
+
+.registerForm {
+  min-height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 100px 0;
+}
+
+.imgContainer {
+  background: #F3F3F3;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: -10;
+}
+
+.accountTypeHolder {
+  width: 76%;
+  max-width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 4px;
+  background: #F3F3F3;
+  border-radius: 10px 10px 0 0;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.accountTypeHolder .activeType {
+  border: 2px solid #2876a0;
+  background-color: #2876a0;
+  color: #F3F3F3;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.accountTypeHolder span {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 50%;
+  text-align: center;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.accountTypeHolder span:hover {
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
+}
+
+.formHolder {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.formHolder form {
+  width: 95%;
+  max-width: 400px;
+  padding: 50px;
+  background: #F3F3F3;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.formHolder form h3 {
+  text-align: center;
+  color: #2876a0;
+  font-size: 1.8em;
+}
+
+.formHolder form .inputContainer {
+  margin-top: 50px;
+}
+
+.formHolder form p span {
+  color: #2876a0;
+  cursor: pointer;
+}
+
+.formHolder form #multiselectContainerReact {
+  border: 12px solid red;
+}
+
+.inputHolder label, .checkboxHolder label, .radioLabelHolder label {
+  font-weight: 600;
+}
+
+.dropdownHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.dropdownHolder label {
+  font-weight: 600;
+}
+
+.dropdownHolder .validationError {
+  padding: 5px;
+  border: 0px;
+  background: #F3F3F3;
+  width: 100%;
+  outline: none;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  border-bottom: 2px solid red;
+}
+
+.dropdownHolder > div {
+  width: 100%;
+}
+
+.inputHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.inputHolder p {
+  font-size: .7em;
+}
+
+.inputHolder label {
+  padding: 5px 0;
+  text-align: left;
+}
+
+.inputHolder .inputBox {
+  padding: 5px;
+  border: 0px;
+  border-bottom: 2px solid #848384;
+  background: #F3F3F3;
+  width: 100%;
+  outline: none;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.inputHolder .inputBox:focus {
+  border-bottom: 2px solid #2876a0;
+}
+
+.inputHolder input[type="submit"] {
+  border-radius: 5px;
+  background: #2876a0;
+  width: 100%;
+  outline: none;
+  border: 0;
+  padding: 15px 0;
+  color: #F3F3F3;
+  margin-top: 15px;
+  cursor: pointer;
+  -webkit-box-shadow: 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.inputHolder input[type="submit"]:disabled {
+  background: #1c2a31;
+  cursor: not-allowed;
+}
+
+.inputHolder input[type="submit"]:hover {
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
+}
+
+.inputHolder input::-webkit-outer-spin-button,
+.inputHolder input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputHolder input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.inputHolder .validationError {
+  padding: 5px;
+  border: 0px;
+  background: #F3F3F3;
+  width: 100%;
+  outline: none;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  border-bottom: 2px solid red;
+}
+
+.errorMsg {
+  color: red;
+  font-size: .7em;
+}
+
+.checkboxHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 10px 0;
+}
+
+.checkboxHolder input {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.radioLabelHolder {
+  text-align: left;
+  padding: 15px 0 5px 0;
+}
+
+.radioBtnHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.radioBtnHolder input {
+  margin-right: 10px;
+}
+
+.validationError {
+  border-bottom: 2px solid red;
+}
+
+@media only screen and (max-width: 900px) {
+  .inputHolder label, .checkboxHolder label, .radioLabelHolder label {
+    font-size: .7em;
+  }
+  .inputHolder label span, .checkboxHolder label span, .radioLabelHolder label span {
+    color: #2876a0;
+  }
+  .checkboxHolder label, .radioBtnHolder label {
+    font-size: .6em;
+  }
+  .formHolder h3 {
+    font-size: 1.5em;
+  }
+  .formHolder form {
+    padding: 50px 25px;
+  }
+}
+/*# sourceMappingURL=authForm.module.css.map */

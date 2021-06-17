@@ -1,11 +1,11 @@
 export default (values,touched)=> {
     let errors = {};
     if(touched.aadhar){
-      if (!values.aadhar) {
-        errors.aadhar= 'Aadhar number is required';
-      }  else if (!/^[2-9]{1}[0-9]{11}$/.test(values.aadhar)) {
-        errors.aadhar = 'Aadhar number is invalid';
-      }
+      if(values.aadhar){
+        if (!/^[2-9]{1}[0-9]{11}$/.test(values.aadhar)) {
+          errors.aadhar = 'Aadhar number is invalid';
+        }
+      } 
     }
     if(touched.pincode){
       if (!values.pincode) {
@@ -13,6 +13,13 @@ export default (values,touched)=> {
       }  else if (!/^[1-8]{1}[0-9]{5}$/.test(values.pincode)) {
         errors.pincode = 'Pincode is invalid';
       }
+    }
+    if(touched.discription){
+      if (values.discription) {
+        if (values.discription.length>150) {
+          errors.discription = 'discription should not exceed 150 letters';
+        }
+      } 
     }
     if(touched.instituteName){
       if (!values.instituteName) {

@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap");
+.contactUsForm {
+  min-height: 80vh;
+  background: #2876a0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 50px 0;
+}
+
+.contactUsForm h2 {
+  color: #F3F3F3;
+}
+
+.contactUsForm .mainContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  margin: 20px auto;
+  height: 700px;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.contactUsForm .mainContainer .infoSection {
+  width: 40%;
+  background: #272727;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.contactUsForm .mainContainer .infoSection .infoHolder .singleInfoContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
+.contactUsForm .mainContainer .infoSection .infoHolder .singleInfoContainer svg {
+  font-size: 2em;
+  background-color: #F3F3F3;
+  padding: 10px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.contactUsForm .mainContainer .infoSection .infoHolder .singleInfoContainer svg path {
+  color: #2876a0;
+}
+
+.contactUsForm .mainContainer .infoSection .infoHolder .singleInfoContainer div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.contactUsForm .mainContainer .infoSection .infoHolder .singleInfoContainer div .infoHeader {
+  color: #2876a0;
+}
+
+.contactUsForm .mainContainer .infoSection .infoHolder .singleInfoContainer div .info {
+  color: #F3F3F3;
+}
+
+.contactUsForm .mainContainer .infoSection .infoHolder .singleInfoContainer div .info a {
+  color: #F3F3F3;
+}
+
+.contactUsForm .mainContainer .formHolder {
+  width: 60%;
+  background-color: #F3F3F3;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.contactUsForm .mainContainer .formHolder form {
+  width: 60%;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder label {
+  color: #2876a0;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder input {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #272727;
+  background-color: transparent;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder input:focus {
+  border-bottom: 2px solid #2876a0;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder textarea {
+  padding: 5px 10px;
+  outline: none;
+  background-color: #F3F3F3;
+  border: 2px solid #272727;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder .validationError {
+  border-bottom: 2px solid red;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder .validationError:focus {
+  border-bottom: 2px solid red;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder .textAreaValidationError {
+  border: 2px solid red;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder .textAreaValidationError:hover {
+  border: 2px solid red;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder textarea:focus {
+  border: 2px solid #2876a0;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder input[type='submit'] {
+  background: #2876a0;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.contactUsForm .mainContainer .formHolder form .inputHolder input[type='submit']:hover {
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-transform: scale(0.97);
+          transform: scale(0.97);
+}
+
+.errorMsg {
+  color: red;
+  font-size: .7em;
+}
+
+.validationError {
+  border-bottom: 2px solid red;
+}
+
+@media only screen and (max-width: 900px) {
+  .contactUsForm .mainContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .contactUsForm .mainContainer .infoSection {
+    width: 100%;
+  }
+  .contactUsForm .mainContainer .formHolder {
+    width: 100%;
+  }
+  .contactUsForm .mainContainer .formHolder form {
+    width: 90%;
+  }
+}
+/*# sourceMappingURL=contactUsForm.module.css.map */

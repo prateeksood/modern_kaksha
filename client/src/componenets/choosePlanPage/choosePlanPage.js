@@ -78,7 +78,7 @@ const ChoosePlanPage=()=>{
     useEffect(()=>{
         const processPayment=async()=>{
             try{
-                let res=await axios.post(`${process.env.REACT_APP_API_URL}/orders`,{price:data.price},{headers:{'x-auth-token':localStorage.getItem("token")}});
+                let res=await axios.post(`/api/orders`,{price:data.price},{headers:{'x-auth-token':localStorage.getItem("token")}});
                 if(!res.status===200){
                     console.log('Something went wrong');
                     setBannerMsg({message:`Something went wrong!`});
@@ -88,7 +88,7 @@ const ChoosePlanPage=()=>{
                     "key": process.env.REACT_APP_RAZORPAY_KEY,
                     "amount": res.data.order.amount*100,
                     "currency": "INR",
-                    "name": 'Delta Educators',
+                    "name": 'Modern Kaksha',
                     'image':{logo},
                     "description":`${data.planName} Pack`,
                     "order_id": res.data.order.id,
@@ -102,7 +102,7 @@ const ChoosePlanPage=()=>{
                         };
                         let body=document.querySelector('body');
                         body.style={overflow:'scroll'};
-                        let result=await axios.post(`${process.env.REACT_APP_API_URL}/orders/success`,orderDetails,{headers:{'x-auth-token':localStorage.getItem("token")}});     
+                        let result=await axios.post(`/api/orders/success`,orderDetails,{headers:{'x-auth-token':localStorage.getItem("token")}});     
                         if(result.status!==200){
                             console.log(result.data.error);
                         }
@@ -161,7 +161,7 @@ const ChoosePlanPage=()=>{
     if(!userLoaded){
         return <div className={styles.choosePlanPage}>
                 <Helmet>
-                    <title>Buy Connects | Choose Plan | Delta Educators</title>
+                    <title>Buy Connects | Choose Plan | Modern Kaksha</title>
                     <meta
                         name="description"
                         content="Buy Delta Eductors Connects. Start Connecting with tutors and students from all over the India and near you. Start teaching at your ease, near you or online. "
@@ -176,7 +176,7 @@ const ChoosePlanPage=()=>{
     return(
         <React.Fragment>
             <Helmet>
-                <title>Buy Connects | Delta Educators</title>
+                <title>Buy Connects | Modern Kaksha</title>
                 <meta
                     name="description"
                     content="Buy Delta Eductors Connects. Start Connecting with tutors and students from all over the India and near you. Start teaching at your ease, near you or online. "
@@ -219,7 +219,7 @@ const ChoosePlanPage=()=>{
                             <div className={styles.selectBtn}>{!isLoading?<div onClick={()=>{selectPlan(9999999,'Platinum',3,1500)}}>Select</div>:<div className={styles.btnDisabled}>Loading...</div>}</div>
                         </div>
                     </div>
-                    <div className={`${styles.planCard} ${styles.platinumCard}`}>
+                    {/* <div className={`${styles.planCard} ${styles.platinumCard}`}>
                         <div className={styles.topSec}>Platinum +</div>
                         <div className={styles.bottomSec}>
                             <div className={styles.priceContainer}><FontAwesomeIcon icon={faRupeeSign}/>2000</div>
@@ -229,8 +229,8 @@ const ChoosePlanPage=()=>{
                             </div>
                             <div className={styles.selectBtn}>{!isLoading?<div onClick={()=>{selectPlan(9999999,'Platinum+ ',6,2000)}}>Select</div>:<div className={styles.btnDisabled}>Loading...</div>}</div>
                         </div>
-                    </div>
-                    <div className={`${styles.planCard} ${styles.platinumCard}`}>
+                    </div> */}
+                    {/* <div className={`${styles.planCard} ${styles.platinumCard}`}>
                         <div className={styles.topSec}>Platinum ++</div>
                         <div className={styles.bottomSec}>
                             <div className={styles.priceContainer}><FontAwesomeIcon icon={faRupeeSign}/>3500</div>
@@ -240,7 +240,7 @@ const ChoosePlanPage=()=>{
                             </div>
                             <div className={styles.selectBtn}>{!isLoading?<div onClick={()=>{selectPlan(9999999,'Platinum++',12,3500)}}>Select</div>:<div className={styles.btnDisabled}>Loading...</div>}</div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className={`${styles.planCard} ${styles.perlCard}`}>
                         <div className={styles.topSec}>Perl</div>
                         <div className={styles.bottomSec}>

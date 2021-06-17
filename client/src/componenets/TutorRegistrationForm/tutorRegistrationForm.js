@@ -15,6 +15,7 @@ const TutorRegistrationForm= ({formType, setFormType})=> {
     const {setUser,setAlertMsg,userLoaded,setBannerMsg } = useContext(userContext);
     const[localErrors,setLocalErrors]=useState({});
     const [profilePic,setProfilePic]=useState();
+    const [isFileBig,setIsFileBig]=useState(false);
 
     useEffect(()=>{
         if(userLoaded){
@@ -30,16 +31,27 @@ const TutorRegistrationForm= ({formType, setFormType})=> {
     },[registerationSuccess])
 
     const profilePicChangeHandler=(e)=>{
-        setProfilePic(e.target.files[0])
+        setProfilePic(e.target.files[0]);
+        setIsFileBig(false);
         if(e.target.files.length===0){
             setLocalErrors({profilePicture:'Profile picture is required'});
-        }else{
-            setLocalErrors({profilePicture:''});
+        }
+        else{
+            let fsize=e.target.files[0].size;
+            const file = Math.round((fsize / 1024)); 
+            if (e.target.files.length!==0&&file > 512) { 
+                setIsFileBig(true)
+                setLocalErrors({profilePicture:'Please select a file less than 500kb'});
+                alert("File too Big, please select a file less than 500kb"); 
+            }
+            else{
+                setLocalErrors({profilePicture:''});
+            }
         }
     }
 
     const registerationHandler =async () => {
-        if(tncAgreed&&profilePic){
+        if(tncAgreed&&!isFileBig){
             setIsLoading(true);
             setTncValidationErr(null);
             const formData=new FormData();
@@ -55,7 +67,7 @@ const TutorRegistrationForm= ({formType, setFormType})=> {
                         'content-type': 'multipart/form-data'
                     }
                 };
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/teachers/register`,formData,config);
+                const res = await axios.post(`/api/teachers/register`,formData,config);
                 if(!res.data.error){
                     localStorage.setItem("token", res.data.result.token);
                     setUser(res.data.result.user);
@@ -157,7 +169,7 @@ const TutorRegistrationForm= ({formType, setFormType})=> {
                     <div className={styles.errorMsg}>{errors.confirmPassword}</div>
                 </div>
                 <div className={styles.inputHolder}>
-                    <label htmlFor='profilePicture'>Profile Picture*</label>
+                    <label htmlFor='profilePicture'>Profile Picture (optional)</label>
                         <input
                             type="file"
                             className={`${styles.inputBox}`}

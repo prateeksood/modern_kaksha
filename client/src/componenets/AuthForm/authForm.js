@@ -25,7 +25,7 @@ const AuthForm= (props)=> {
                 setBackUrl(location.state.backUrl);
             }
         }else{
-            setBackUrl('/')
+            setBackUrl('/connect')
         }
         return 'studentLogin';
     });
@@ -50,15 +50,27 @@ const AuthForm= (props)=> {
         }
         else if(props.formType==='studentInfoForm'){
             window.scrollTo(0, 0);
-            return <StudentInfoForm  formType={props.formType} setFormType={setFormType} backUrl={backUrl}/>
+            return <StudentInfoForm  formType={props.formType} setFormType={setFormType} isEditProfileForm={false} backUrl={backUrl}/>
+        }
+        else if(props.formType==='studentEditProfileForm'){
+            window.scrollTo(0, 0);
+            return <StudentInfoForm  formType={props.formType} setFormType={setFormType} isEditProfileForm={true} backUrl={backUrl}/>
         }
         else if(props.formType==='tutorInfoForm'){
             window.scrollTo(0, 0);
-            return <TutorInfoForm  formType={props.formType} setFormType={setFormType} />
+            return <TutorInfoForm  formType={props.formType} setFormType={setFormType} isEditProfileForm={false}/>
+        }
+        else if(props.formType==='tutorEditProfileForm1'){
+            window.scrollTo(0, 0);
+            return <TutorInfoForm  formType={props.formType} setFormType={setFormType} isEditProfileForm={true}/>
         }
         else if(props.formType==='tutorFeeDetailForm'){
             window.scrollTo(0, 0);
-            return <TutorFeeDetailForm formType={props.formType} setFormType={setFormType} backUrl={backUrl}/>
+            return <TutorFeeDetailForm formType={props.formType} setFormType={setFormType} isEditProfileForm={false} backUrl={backUrl}/>
+        }
+        else if(props.formType==='tutorEditProfileForm2'){
+            window.scrollTo(0, 0);
+            return <TutorFeeDetailForm formType={props.formType} setFormType={setFormType} isEditProfileForm={true} backUrl={backUrl}/>
         }
         else if(props.formType==='tutorVerifyEmailForm'){
             window.scrollTo(0, 0);

@@ -12,9 +12,9 @@ export default () => {
       <motion.header initial={{opacity:0}} animate={{opacity:1}}>
         <div className={styles.siteBanner}>
           <div className={styles.logo}><img src={logo}></img></div>
-          <div className={styles.siteTitle}>
-            Delta Educators
-          </div>
+          {/* <div className={styles.siteTitle}>
+            Modern Kaksha
+          </div> */}
         </div>
       </motion.header>
 }

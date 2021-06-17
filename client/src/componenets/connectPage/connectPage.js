@@ -113,7 +113,7 @@ const ConnectPage=() => {
         const fetchTeachers=async ()=>{
             setIsLoading(true)
             try{
-                const res= await axios.post(`${process.env.REACT_APP_API_URL}/teachers/`,data);
+                const res= await axios.post(`/api/teachers/`,data);
                 if(!res.data.error){
                     setHasMore(res.data.result.length===pageSize)
                     if(refresh){
@@ -139,7 +139,7 @@ const ConnectPage=() => {
 
             try{
 
-                const res= await axios.post(`${process.env.REACT_APP_API_URL}/students/`,data);
+                const res= await axios.post(`/api/students/`,data);
                 if(!res.data.error){
                     setHasMore(res.data.result.length===pageSize)
                     if(refresh){
@@ -256,8 +256,7 @@ const ConnectPage=() => {
 
     const onSubjectChange=(subjects)=>{
         setRefresh(true);
-        let arr=subjects.map(subject=>subject.value)
-        setSubjectList(arr);
+        setSubjectList(subjects);
     }
     if(user)
     {
@@ -265,18 +264,18 @@ const ConnectPage=() => {
             <React.Fragment>
                 {user.accountType==='student'?
                 <Helmet>
-                    <title>Find best tutor near you and online | Delta Educators</title>
+                    <title>Find best tutor near you and online | Modern Kaksha</title>
                     <meta
                         name="description"
-                        content="Find tutor near you. We at Delta Educators have tutors not only for subjects like Mathematics, Economics, Physics, Chemistry, Biology, Science, Social Studies, Hindi, English but also for extracurricular activities and sports."
+                        content="Find tutor near you. We at Modern Kaksha have tutors not only for subjects like Mathematics, Economics, Physics, Chemistry, Biology, Science, Social Studies, Hindi, English but also for extracurricular activities and sports."
                     />
                 </Helmet>
                 :
                 <Helmet>
-                    <title>Teach students near you and online | Delta Educators</title>
+                    <title>Teach students near you and online | Modern Kaksha</title>
                     <meta
                         name="description"
-                        content="Find students near you to teach. We at Delta Educators require tutors not only for subjects like Mathematics, Economics, Physics, Chemistry, Biology, Science, Social Studies, Hindi, English but also for extra extracurricular and sports."
+                        content="Find students near you to teach. We at Modern Kaksha require tutors not only for subjects like Mathematics, Economics, Physics, Chemistry, Biology, Science, Social Studies, Hindi, English but also for extra extracurricular and sports."
                     />
                 </Helmet>
                 }
@@ -289,12 +288,12 @@ const ConnectPage=() => {
                                 profiles.length>0?
                                 <div className={styles.cardHolder}>
                                     {profiles.map((profile,i)=>(
-                                        <UserCard profile={profile} key={i} index={i}/>
+                                        <UserCard profile={profile} key={i} index={i} />
                                     ))}  
                                 </div>
                                 :
                                 <div className={styles.notFoundMsgHolder}>
-                                    <div className={styles.notFoundMsg}>No Profiles matching your requirements found.</div>
+                                    <div className={styles.notFoundMsg}>No profiles matching your requirements found.</div>
                                 </div>
                             )
                             :
@@ -309,10 +308,10 @@ const ConnectPage=() => {
                                 <>
                                     <div className={styles.filterSecHead}>Filter by fees</div>
                                     <div className={styles.inputHolder}>
-                                        <div><input type="radio" name="feesType" value='allfees' id='allfees' checked={feeModeFilter==='allfees'} onChange={changeFeeModeFilter}/><label htmlFor='allfees'>All</label></div>
+                                        {/* <div><input type="radio" name="feesType" value='allfees' id='allfees' checked={feeModeFilter==='allfees'} onChange={changeFeeModeFilter}/><label htmlFor='allfees'>All</label></div>
                                         <div><input type="radio" name="feesType" value='hourly' id='hourly' checked={feeModeFilter==='hourly'} onChange={changeFeeModeFilter}/><label htmlFor='hourly'>Hourly fees</label></div>
                                         <div><input type="radio" name="feesType" value='daily' id='daily' checked={feeModeFilter==='daily'} onChange={changeFeeModeFilter}/><label htmlFor='daily'>Daily fees</label></div>
-                                        <div><input type="radio" name="feesType" value='monthly' id='monthly' checked={feeModeFilter==='monthly'} onChange={changeFeeModeFilter}/><label htmlFor='monthly'>Monthly fees</label></div>
+                                        <div><input type="radio" name="feesType" value='monthly' id='monthly' checked={feeModeFilter==='monthly'} onChange={changeFeeModeFilter}/><label htmlFor='monthly'>Monthly fees</label></div> */}
                                         <div className={styles.feeRangeHolder}>
                                             <div className={styles.minfeesHolder}>
                                                 <input type='number' name='minFees'placeholder='Minimum' onChange={changeMinimumFees}/>
@@ -332,9 +331,12 @@ const ConnectPage=() => {
                                 <div className={styles.dropDownHolder}>
                                     <Select
                                         multi
+                                        create
                                         options={subjects}
                                         onChange={onSubjectChange}
                                         color="#2876A0"
+                                        labelField='value'
+                                        sortBy='value'
                                     />
                                 </div>
                             </div>

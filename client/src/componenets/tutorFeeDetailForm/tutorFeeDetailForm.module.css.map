@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,0LAAI;AACZ,OAAO,CAAC,mGAAI;AACZ,OAAO,CAAC,gFAAI;ADDZ,AAAA,SAAS,CAAA;EACL,SAAS,EAAC,IAAI;EACd,KAAK,ECEK,OAAO;CDDpB",
+    "sources": [
+        "tutorFeeDetailForm.module.scss",
+        "../../resources/styles/theme.module.scss"
+    ],
+    "names": [],
+    "file": "tutorFeeDetailForm.module.css"
+}

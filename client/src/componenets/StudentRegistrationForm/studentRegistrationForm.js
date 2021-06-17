@@ -15,6 +15,7 @@ const StudentRegistrationForm=({formType, setFormType})=> {
     const[localErrors,setLocalErrors]=useState({});
     const [profilePic,setProfilePic]=useState();
     const [isInfoCaptured,setIsInfoCaptured]=useState(false);
+    const [isFileBig,setIsFileBig]=useState(false);
     useEffect(()=>{
         if(userLoaded){
           localStorage.removeItem('token');
@@ -29,15 +30,28 @@ const StudentRegistrationForm=({formType, setFormType})=> {
     },[registerationSuccess]);
 
     const profilePicChangeHandler=(e)=>{
-        setProfilePic(e.target.files[0])
+        setProfilePic(e.target.files[0]);
+        setIsFileBig(false);
+        
+        
         if(e.target.files.length===0){
             setLocalErrors({profilePicture:'Profile picture is required'});
-        }else{
-            setLocalErrors({profilePicture:''});
+        }
+        else{
+            let fsize=e.target.files[0].size;
+            const file = Math.round((fsize / 1024));
+            if (e.target.files.length!==0&&file > 512) {  
+                setIsFileBig(true)
+                setLocalErrors({profilePicture:'Please select a file less than 500kb'});
+                alert("File too Big, please select a file less than 500kb"); 
+            }
+            else{
+                setLocalErrors({profilePicture:''});
+            }
         }
     }
     const registerationHandler =async () => {
-        if(tncAgreed&&profilePic){
+        if(tncAgreed&&!isFileBig){
             setIsLoading(true);
             setTncValidationErr(null);
             const formData=new FormData();
@@ -52,7 +66,7 @@ const StudentRegistrationForm=({formType, setFormType})=> {
                         'content-type': 'multipart/form-data'
                     }
                 };
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/students/register`,formData,config);
+                const res = await axios.post(`/api/students/register`,formData,config);
                 if(!res.data.error){
                     localStorage.setItem("token", res.data.result.token);
                     setUser(res.data.result.user);
@@ -102,7 +116,7 @@ const StudentRegistrationForm=({formType, setFormType})=> {
                         <div className={styles.errorMsg}>{errors.fullName}</div>
                     </div>
                     <div className={styles.inputHolder}>
-                        <label htmlFor='email'>Email</label>
+                        <label htmlFor='email'>Email*</label>
                         <input
                             type="email"
                             className={`${errors.email? styles.validationError:styles.inputBox}`}
@@ -115,7 +129,7 @@ const StudentRegistrationForm=({formType, setFormType})=> {
                         <div className={styles.errorMsg}>{errors.email}</div>
                     </div>
                     <div className={styles.inputHolder}>
-                        <label htmlFor='contact'>Contact Number</label>
+                        <label htmlFor='contact'>Contact Number*</label>
                             <input
                                 type="number"
                                 className={`${errors.contactNumber? styles.validationError:styles.inputBox}`}
@@ -128,7 +142,7 @@ const StudentRegistrationForm=({formType, setFormType})=> {
                         <div className={styles.errorMsg}>{errors.contactNumber}</div>
                     </div>
                     <div className={styles.inputHolder}>
-                        <label htmlFor='password'>Password</label>
+                        <label htmlFor='password'>Password*</label>
                             <input
                                 type="password"
                                 className={`${errors.password? styles.validationError:styles.inputBox}`}
@@ -141,7 +155,7 @@ const StudentRegistrationForm=({formType, setFormType})=> {
                         <div className={styles.errorMsg}>{errors.password}</div>
                     </div>
                     <div className={styles.inputHolder}>
-                        <label htmlFor='confirm-password'>Confirm Password</label>
+                        <label htmlFor='confirm-password'>Confirm Password*</label>
                             <input
                                 type="password"
                                 className={`${errors.confirmPassword? styles.validationError:styles.inputBox}`}
@@ -154,7 +168,7 @@ const StudentRegistrationForm=({formType, setFormType})=> {
                         <div className={styles.errorMsg}>{errors.confirmPassword}</div>
                     </div>
                     <div className={styles.inputHolder}>
-                    <label htmlFor='confirm-password'>Profile Picture*</label>
+                    <label htmlFor='confirm-password'>Profile Picture (Optional)</label>
                         <input
                             type="file"
                             className={`${styles.inputBox}`}

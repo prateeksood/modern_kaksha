@@ -10,6 +10,9 @@ import {userContext} from '../../context/userContext';
 import styles from './contactUsForm.module.scss'
 
 const ContactUsForm=()=>{
+    useEffect(()=>{
+        window.scroll(0,0)
+    },[]);
     const [isLoading,setIsLoading]=useState(false);
     const {setBannerMsg}=useContext(userContext);
     const submitHandler = async () => {
@@ -21,7 +24,7 @@ const ContactUsForm=()=>{
         };
         try{
             setIsLoading(true)
-            let res= await axios.post(`${process.env.REACT_APP_API_URL}/messages`, data);
+            let res= await axios.post(`/api/messages`, data);
             if(res.status===200){
                 console.log('Submited');
                 setBannerMsg({message:`Thanks for contacting us will reach you soon`});
@@ -47,10 +50,10 @@ const ContactUsForm=()=>{
     return(
         <>
             <Helmet>
-                <title>Contact Us | Feedback | Delta Educators</title>
+                <title>Contact Us | Feedback | Modern Kaksha</title>
                 <meta
                     name="description"
-                    content="Contact us if you have any feedback for Delta Educators."
+                    content="Contact us if you have any feedback for Modern Kaksha."
                 />
             </Helmet>
             <div className={styles.contactUsForm}>
@@ -62,7 +65,7 @@ const ContactUsForm=()=>{
                                 <FontAwesomeIcon icon={faEnvelope}/>
                                 <div>
                                     <div className={styles.infoHeader}>Email</div>
-                                    <div className={styles.info}><a href="mailto:support@deltaeducators.com">support@deltaeducators.com</a></div>
+                                    <div className={styles.info}><a href="mailto:support@modernkaksha.com">support@modernkaksha.com</a></div>
                                 </div>      
                             </div>
 
@@ -70,7 +73,7 @@ const ContactUsForm=()=>{
                                 <FontAwesomeIcon icon={faPhone}/>
                                 <div>
                                     <div className={styles.infoHeader}>Contact Number</div>
-                                    <div className={styles.info}><a href="tel:+918628855283">+91-8628855283</a></div>
+                                    <div className={styles.info}><a href="tel:+916230960186">+91-6230960186</a></div>
                                 </div>
                             </div>
 

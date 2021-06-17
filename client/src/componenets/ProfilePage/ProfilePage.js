@@ -6,13 +6,17 @@ import styles from './ProfilePage.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
 import {userContext} from '../../context/userContext';
-import { Link, Redirect, useLocation,useParams} from 'react-router-dom'
+import { Link, Redirect, useHistory, useLocation,useParams} from 'react-router-dom'
 import axios from 'axios'
+import placeHolderImg from '../../resources/images/profile-pic-placeholder.png';
 import PageNotFoundErrorPage from '../PageNotFoundErrorPage/pageNotFoundErrorPage';
 import Loader from '../Loader/loader';
+import UserCard from '../UserCard/userCard';
 
 const ProfilePage=()=>{
-    const reasons=['Rude Behavior','Not taking classes','Harassment','Others (Mention in message box)']
+    const history=useHistory();
+    const reasons=['Rude Behavior','Not taking classes','Harassment','Others (Mention in message box)'];
+    const months=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October','November','December']
     const [isLoading,setIsLoading]=useState(true);
     const [showReportForm,setShowReportForm]=useState(false);
     const [reviews,setReviews]=useState([]);
@@ -23,7 +27,8 @@ const ProfilePage=()=>{
     const [serverError,setServerError]=useState(false)
     const [localValues,setLocalValues]=useState({});
     const [userConnections,setUserConnections]=useState([]);
-    const {userLoaded,user,setAlert,setBannerMsg } = useContext(userContext);
+    const [myAds,setMyAds]=useState([]);
+    const {userLoaded,user,setAlert,setBannerMsg,setUser } = useContext(userContext);
     const location=useLocation();
     let {id}=useParams();
     const [currentUser,setCurrentUser]=useState();
@@ -34,7 +39,7 @@ const ProfilePage=()=>{
     useEffect(()=>{
         const fetchCurrentUser=async()=>{
             try{
-                let res= await axios.get(`${process.env.REACT_APP_API_URL}/auth/find-by-id`, { params: {_id:id} })
+                let res= await axios.get(`/api/auth/find-by-id`, { params: {_id:id} })
                 if(res.status===200){
                     setCurrentUser(res.data.result);
                 }
@@ -55,7 +60,7 @@ const ProfilePage=()=>{
         const fetchConnections=async ()=>{
             setIsLoading(true);
             try{
-                let res= await axios.post(`${process.env.REACT_APP_API_URL}/auth/find-multiple-by-id`, {connectionIDs:user.connections});
+                let res= await axios.post(`/api/auth/find-multiple-by-id`, {connectionIDs:currentUser.connections});
                 if(res.status===200){
                     setUserConnections(res.data.result);
                 }
@@ -66,8 +71,43 @@ const ProfilePage=()=>{
             }  
             setIsLoading(false) 
         }
-        if(user&&currentUser&&(user._id===currentUser._id)){
+        const fetchMyAds=async ()=>{
+            setIsLoading(true);
+            if(currentUser.accountType==='teacher'){
+                try{
+                    let res= await axios.post(`/api/teachers/getAdsByOwnerId`, {id:currentUser._id});
+                    if(res.status===200){
+                        setMyAds(res.data.result);
+                    }
+                }
+                catch(err){
+                    console.log(err);
+                    setBannerMsg({message:`Something went wrong!`});
+                }
+                finally{
+                    setIsLoading(false)
+                }
+            }
+            else{
+                try{
+                    let res= await axios.post(`/api/students/getAdsByOwnerId`, {id:currentUser._id});
+                    if(res.status===200){
+                        setMyAds(res.data.result);
+                    }
+                }
+                catch(err){
+                    console.log(err);
+                    setBannerMsg({message:`Something went wrong!`});
+                }
+                finally{
+                    setIsLoading(false)
+                }
+            }
+             
+        }
+        if(user&&currentUser&&(user._id===currentUser._id||user.isAdmin)){
             fetchConnections();
+            fetchMyAds();
         }
     },[user,currentUser])
     useEffect(()=>{
@@ -75,7 +115,7 @@ const ProfilePage=()=>{
             setIsLoading(true)
             setReviews([])
             try{
-                const res=await axios.get(`${process.env.REACT_APP_API_URL}/reviews`, { params: {targetUserId: currentUser._id} });
+                const res=await axios.get(`/api/reviews`, { params: {targetUserId: currentUser._id} });
                 res.data.result.forEach(review=>{
                     setReviews(prev=>[...prev,review]);
                 })
@@ -127,42 +167,68 @@ const ProfilePage=()=>{
             setLocalErrors({...localErrors,[e.target.name]:``})
         }
     }
-    const reviewHandler = async () => {
-        if(rating>0&&(currentUser._id!==user._id)){
-            setLocalErrors({...localErrors,rating:''})
-            const data = {
-                rating:rating,
-                reviewTitle: values.reviewTitle,
-                reviewBody: values.reviewBody,
-                targetUserId:currentUser._id,
-                reviewerName:user.name,
-                reviewerId:user._id
-            }
-            try{
-                setIsLoading(true)
-                const res= await axios.post(`${process.env.REACT_APP_API_URL}/reviews/`,data);
-                if(!res.data.error){
-                    setReviews(prev=>[...prev,res.data.result]);
-                    setBannerMsg({message:'Review successfully submited'})
+    const showEditForm =()=>{
+        if(currentUser.accountType==='teacher'){
+            history.push({
+                pathname:'/auth',
+                state:{
+                    backUrl:location.pathname,
+                    formType:'tutorEditProfileForm1'
                 }
-            }
-            catch(err){
-                console.log(err);
-                setBannerMsg({message:`Something went wrong!`});
-            }
-            finally{
-                setIsLoading(false)
-            }
-            values.reviewBody='';
-            values.reviewTitle='';
-            setRating(0);
+            })
+        }else{
+            history.push({
+                pathname:'/auth',
+                state:{
+                    backUrl:location.pathname,
+                    formType:'studentEditProfileForm'
+                }
+            })
         }
-        else if(rating<=0){
-            setLocalErrors({...localErrors,rating:'Please rate the user'})
+        
+    }
+    const reviewHandler = async () => {
+        const reviewExist = reviews.find(review=> review.reviewerId===user._id);
+        if(reviewExist){
+            setBannerMsg({message:'You have already reviewed this user.'})
+        }else{
+            if(rating>0&&(currentUser._id!==user._id)){
+                setLocalErrors({...localErrors,rating:''})
+                const data = {
+                    rating:rating,
+                    reviewTitle: values.reviewTitle,
+                    reviewBody: values.reviewBody,
+                    targetUserId:currentUser._id,
+                    reviewerName:user.name,
+                    reviewerId:user._id
+                }
+                try{
+                    setIsLoading(true)
+                    const res= await axios.post(`/api/reviews/`,data);
+                    if(!res.data.error){
+                        setReviews(prev=>[...prev,res.data.result]);
+                        setBannerMsg({message:'Review successfully submited'})
+                    }
+                }
+                catch(err){
+                    console.log(err);
+                    setBannerMsg({message:`Something went wrong!`});
+                }
+                finally{
+                    setIsLoading(false)
+                }
+                values.reviewBody='';
+                values.reviewTitle='';
+                setRating(0);
+            }
+            else if(rating<=0){
+                setLocalErrors({...localErrors,rating:'Please rate the user'})
+            }
+            else if(currentUser._id===user._id){
+                setAlert({message:'You can not review yourself'})
+            }
         }
-        else if(currentUser._id===user._id){
-            setAlert({message:'You can not review yourself'})
-        }
+        
     };
     const reportHandler = async (e) => {
         e.persist();
@@ -184,7 +250,7 @@ const ProfilePage=()=>{
             }
             try{
                 setIsLoading(true)
-                let res= await axios.post(`${process.env.REACT_APP_API_URL}/messages`, data);
+                let res= await axios.post(`/api/messages`, data);
                 if(res.status===200){
                     console.log('Submited');
                     setBannerMsg({message:`Thanks for reporting. We will look into the matter.`});
@@ -204,9 +270,52 @@ const ProfilePage=()=>{
         }
         
     };
+
     const handleReasonChange=(e)=>{
         setReportingReason(e.target.value);
     }
+
+    const handleAdActiveChange=async(adID,activeStatus)=>{
+        let data={
+            _id:adID,
+            isAdActive:!activeStatus,
+        }
+        const config = {
+            headers: {
+                'x-auth-token':localStorage.getItem("token")
+            }
+        };
+        if(currentUser.accountType==='student'){
+            try{
+                const res = await axios.put(`/api/students/updateAd`,data,config);
+                const updatedAds = myAds.map(ad =>
+                    ad._id === adID
+                      ? { ...ad, isAdActive:!activeStatus}
+                      : ad
+                );
+                setMyAds(updatedAds)
+            }
+            catch(err){
+                console.log(err);
+                setBannerMsg({message:`Something went wrong!`});
+            }
+        }else{
+            try{
+                const res = await axios.put(`/api/teachers/updateAd`,data,config);
+                const updatedAds = myAds.map(ad =>
+                    ad._id === adID
+                      ? { ...ad, isAdActive:!activeStatus}
+                      : ad
+                );
+                setMyAds(updatedAds)
+            }
+            catch(err){
+                console.log(err);
+                setBannerMsg({message:`Something went wrong!`});
+            }
+        }
+    }
+
     const { values , errors, handleChange, handleSubmit } = useForm(
     reviewHandler,
     validationRules
@@ -225,58 +334,84 @@ const ProfilePage=()=>{
         setBannerMsg({message:'Kindly login to continue'})
         return <Redirect to={{pathname:'/auth',state:{backUrl:location.pathname}}}/>
     }
-    if(userLoaded&&currentUser&&!(user._id===currentUser._id)&&!(user.connections.some((connection)=>{return currentUser._id===connection}))){
+    if(userLoaded&&user&&!user.isAdmin&&currentUser&&!(user._id===currentUser._id)&&!(user.connections.some((connection)=>{return currentUser._id===connection}))){
         return <PageNotFoundErrorPage/>
     }
     if(serverError){
         return <PageNotFoundErrorPage/>
     }
-    if(!isLoading&&userLoaded&&currentUser){
+    if(!isLoading&&userLoaded&&currentUser&&currentUser.isActive){
         return(
             <React.Fragment>
                 <Helmet>
-                    <title>{currentUser.name} | Delta Educators</title>
+                    <title>{currentUser.name} | Modern Kaksha</title>
                     <meta
                         name="description"
-                        content={`User profile : ${currentUser.name}. Subjects: ${currentUser.subjects}`}
+                        content={`User profile : ${currentUser.name} | Subjects: ${currentUser.subjects.map(subject=>( subject.value))}`}
                     />
                 </Helmet>
                 <div className={styles.profilePage}>
                     <div className={styles.profileHolder}>
                         <div className={styles.topHalf}>
                             <div className={styles.imageHolder}>
-                                <img src={`http://localhost:2700/uploads/profilePictures/${currentUser.profilePicture}`} alt='Profile Avatar'></img>
+                                {currentUser.profilePicture!=='undefined'?
+                                    <img src={`http://modernkaksha.com/api/uploads/profilePictures/${currentUser.profilePicture}`} alt='Profile Avatar'></img>
+                                :
+                                    <img src={placeHolderImg} alt='Profile Avatar'></img>
+                                }
+                                <div className={styles.classesHolder}>
+                                {
+                                    currentUser.classGroups?
+                                        currentUser.classGroups.map((classGroup,i)=>{
+                                            return <div className={styles.classes} key={i}>{classGroup.value}</div>
+                                        })
+                                    :
+                                        <div className={styles.classes} >{currentUser.classOfStudy.value}</div>
+                                }
+                                </div>
+                                
                             </div>
                             <div className={styles.mainDetails}>
                                 <div className={styles.profileName}>{currentUser.name}</div>
-                                <div className={styles.location}><FontAwesomeIcon icon={faMapMarkerAlt}/> {currentUser.district}, {currentUser.state}</div>
-                                {currentUser._id===user._id&&<div>{user.connectsLeft} Connects Available</div>}
+                                {currentUser.isStepOneDone&&<div className={styles.location}><FontAwesomeIcon icon={faMapMarkerAlt}/> {currentUser.district}, {currentUser.state}</div>}
+                                {(currentUser._id===user._id||user.isAdmin)&&<div><b>{currentUser.connectsLeft} Credits Available</b></div>}
                                 <div className={styles.ratingContainer}>
                                     <Stars rating={avgRating}/>
                                 </div>
                                 <div className={styles.skillConatiner}>
                                     {
                                         currentUser.subjects.map((subject,i)=>{
-                                        return <div className={styles.skill} key={i}>{subject}</div>
+                                        return <div className={styles.skill} key={i}>{subject.value}</div>
                                         })
                                     }
                                 </div>
-                                {(currentUser._id!==user._id)&&!showReportForm&&<div className={styles.reportBtn} onClick={toggleReportform}><span>Report</span></div>}
+                                {(currentUser._id!==user._id)?
+                                    !showReportForm&&
+                                        <div className={styles.reportBtn} onClick={toggleReportform}><span>Report</span></div>
+                                :
+                                    (
+                                        currentUser.isActive&&
+                                        <div className={styles.reportBtn} onClick={showEditForm}><span>Edit Profile</span></div>
+                                    )
+                                }
                             </div>
                         </div>
                         {userConnections.length>0&&
+                        <>
                             <div className={styles.middleSection}>
                                 <div className={styles.secBelowPic}></div>
                                 <div className={styles.connectionsHolder}>
                                     <div className={styles.connectionsFormHeading}>Connections</div>
                                     <ul>
                                         {userConnections.map((profile,i)=>{
-                                            return<li key={i} onClick={()=>setUserConnections([])}><Link to={`${profile._id}`}>{profile.name}</Link> </li>
+                                            return <li key={i} onClick={()=>setUserConnections([])}><Link to={`${profile._id}`}>{profile.name}</Link> </li>
                                         })}
                                     </ul>
-                                   
+                                    
                                 </div>
                             </div>
+                            
+                        </>
                         }
 
                         {showReportForm&&
@@ -300,6 +435,7 @@ const ProfilePage=()=>{
                         <div className={styles.bottomHalf}>
                             <div className={styles.secBelowPic}></div>
                             <div className={styles.bottomInfoContainer}>
+                            <hr/>
                                 <div className={styles.contactInfoHeading}>Contact Information</div>
                                 <div className={styles.contactInfoHolder}>
                                     <div>
@@ -311,6 +447,55 @@ const ProfilePage=()=>{
                                         <div><a href={`tel:+91${currentUser.contactNumber}`}>+91-{currentUser.contactNumber}</a></div>
                                     </div>
                                 </div>
+                                <hr/>
+                                {(currentUser._id===user._id||user.isAdmin)&&
+                                <>
+                                    <div className={styles.contactInfoHeading}>Credit Purchase</div>
+                                    <div className={styles.contactInfoHolder}>
+                                        {currentUser.ActiveCreditPurchases.map((purchase,i)=>(
+                                            <div key={i}>
+                                                <div className={styles.infoHead}>{purchase.connects} Credits</div>
+                                                {
+                                                (new Date()<(new Date(purchase.expiry)))?
+                                                    <div> 
+                                                        Expiring on {`
+                                                            ${(new Date(purchase.expiry)).getDate()}-
+                                                            ${months[(new Date(purchase.expiry)).getMonth()]}-
+                                                            ${(new Date(purchase.expiry)).getFullYear()}`
+                                                        } 
+                                                    </div>
+                                                    :
+                                                    <div style={{color:'red'}}> 
+                                                        Expired on {`
+                                                            ${(new Date(purchase.expiry)).getDate()} 
+                                                            ${months[(new Date(purchase.expiry)).getMonth()]},
+                                                            ${(new Date(purchase.expiry)).getFullYear()}`
+                                                        } 
+                                                    </div>
+                                                }
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <hr/>
+
+                                </>
+                                }
+                                {(currentUser._id===user._id||user.isAdmin)&&<>
+                                    <div className={styles.adHeading}>Your Ads</div>
+                                    {myAds.map((ad,i)=>(
+                                        <div className={styles.adHolder} key={i}>
+                                            <div className={styles.toggleLabel}><b>{ad.subject.value}</b></div>
+                                            <div className={styles.toggleHolder}>
+                                                <input type="checkbox" id={`switch-${ad.subject.value}`} checked={ad.isAdActive} onChange={()=>handleAdActiveChange(ad._id,ad.isAdActive)}/>
+                                                <label for={`switch-${ad.subject.value}`}>Toggle</label>
+                                            </div>
+                                            <div className={styles.toggleLabel}>{ad.isAdActive?`(Requirement not fulfilled and Ad is active)`:`(Requirement fulfilled and Ad is inactive)`}</div>
+                                        </div>
+                                    ))}
+                                    
+                                    <hr/>
+
+                                </>}
                                 <div className={styles.reviewSecHeading}>Recent Reviews</div>
                                 <div className={styles.reviewHolder}>
                                     {reviews.map((review,i)=>{

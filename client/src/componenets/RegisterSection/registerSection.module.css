@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap");
+.signinSection {
+  height: 700px;
+  position: relative;
+  margin-top: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.studentSection, .tutorSection {
+  background: #2876a0;
+  height: 100%;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.studentSection {
+  background: #2876a0;
+  color: #272727;
+}
+
+.studentSection .alreadyRegisteredText {
+  color: #F3F3F3;
+}
+
+.studentSection .alreadyRegisteredText a {
+  color: #272727;
+}
+
+.studentSection .alreadyRegisteredText span {
+  color: #272727;
+}
+
+.tutorSection {
+  background: #272727;
+  color: #2876a0;
+}
+
+.tutorSection .alreadyRegisteredText {
+  color: #F3F3F3;
+}
+
+.tutorSection .alreadyRegisteredText a {
+  color: #2876a0;
+}
+
+.tutorSection .alreadyRegisteredText span {
+  color: #2876a0;
+}
+
+.content {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.studentSecHead {
+  font-size: 4em;
+}
+
+.tutorSecHead {
+  font-size: 4em;
+  color: #2876a0;
+}
+
+.studentRegisterBtn, .tutorRegisterBtn {
+  margin-top: 30px;
+}
+
+.studentRegisterBtn a, .tutorRegisterBtn a {
+  font-size: 2em;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 10px;
+  margin-top: 30px;
+  display: inline-block;
+}
+
+.studentRegisterBtn a {
+  color: #272727;
+}
+
+.tutorRegisterBtn a {
+  color: #2876a0;
+}
+
+.studentRegisterBtn a:hover, .tutorRegisterBtn a:hover, .studentRegisterBtn a:active {
+  -webkit-box-shadow: 1px 1px 5px;
+          box-shadow: 1px 1px 5px;
+}
+
+.studentRegisterBtn a:active, .tutorRegisterBtn a:active {
+  -webkit-box-shadow: 1px 1px 5px;
+          box-shadow: 1px 1px 5px;
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+}
+
+.alreadyRegisteredText {
+  margin-top: 30px;
+}
+
+@media only screen and (max-width: 900px) {
+  .signinSection {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 120vh;
+  }
+  .studentSection, .tutorSection {
+    width: 100%;
+    height: 50%;
+  }
+  .content {
+    padding: 20px 0;
+  }
+  .studentSecHead, .tutorSecHead {
+    font-size: 2em;
+  }
+  .studentRegisterBtn a, .tutorRegisterBtn a {
+    font-size: 1.3em;
+  }
+}
+/*# sourceMappingURL=registerSection.module.css.map */

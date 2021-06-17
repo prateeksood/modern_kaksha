@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import Aos from 'aos';
+import {userContext} from '../../context/userContext';
 import styles from './searchTutorSection.module.scss';
 import {subjects} from '../../data/data';
 import Select from 'react-dropdown-select';
 import { Redirect } from "react-router-dom";
 
 export default () => {
+  const {userLoaded,user,setAlert,setBannerMsg,setUser } = useContext(userContext);
   const [pincode,setPincode]=useState();
   const [subjectList,setSubjectList]=useState([]);
   const [startSearch,setStartSearch]=useState(false);
@@ -13,8 +15,7 @@ export default () => {
       setPincode(e.target.value)
   }
  const onSubjectChange=(subjects)=>{
-   let arr=subjects.map(subject=>subject.value)
-  setSubjectList(arr);
+    setSubjectList(subjects);
  }
 
   const handleSearch=()=>{
@@ -33,14 +34,19 @@ export default () => {
       <div className={styles.searchTutorSection} id='search-bar'>
             <div  data-aos='zoom-in'>
                 <div className={styles.searchHolder}>
-                    <div className={styles.searchSecHead}><span className={styles.mainText}>Find Tutors</span ><span className={styles.followText}>Near You</span></div>
+                    <div className={styles.searchSecHead}><span className={styles.mainText}>{userLoaded&&user&&user.accountType==='teacher'? 'Find Students':'Find Tutors'}</span ><span className={styles.followText}>Near You</span></div>
                     <div className={styles.pinCode}><input type="number" placeholder="Pincode" onChange={pincodeChangeHandler}/></div>
                     <div className={styles.subjects}>
                           <Select
                             multi
+                            create
                             options={subjects}
                             onChange={onSubjectChange}
                             color="#2876A0"
+                            labelField='value'
+                            sortBy='value'
+                            dropdownPosition='top'
+                            placeholder='Subject'
                           />
 
                     </div>

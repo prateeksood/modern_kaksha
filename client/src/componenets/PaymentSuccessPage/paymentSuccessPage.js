@@ -21,7 +21,7 @@ const PaymentSuccessPage= (props)=> {
     return (
         <div className={styles.paymentSuccessPage}>
             <Helmet>
-                <title>Payment Success | Delta Educators</title>
+                <title>Payment Success | Modern Kaksha</title>
                 <meta
                     name="description"
                     content="Payment Successful "

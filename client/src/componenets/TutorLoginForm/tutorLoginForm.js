@@ -47,7 +47,7 @@ const TutorLoginForm= ({formType, setFormType,backUrl})=> {
         };
         try{
             setIsLoading(true)
-            let res= await axios.post(`${process.env.REACT_APP_API_URL}/teachers/login`, data)
+            let res= await axios.post(`/api/teachers/login`, data)
             if (!res.data.error) {
                 localStorage.setItem("token", res.data.result.token);
                 setBannerMsg({message:`Welcome back ${res.data.result.user.name}`})
@@ -72,7 +72,7 @@ const TutorLoginForm= ({formType, setFormType,backUrl})=> {
     validationRules
     );
     if(loginSuccess&&!isLoading){   
-        return (<Redirect to={backUrl||'/'}/>)
+        return (<Redirect to={backUrl||'/connect'}/>)
     }
     return (
       <React.Fragment>

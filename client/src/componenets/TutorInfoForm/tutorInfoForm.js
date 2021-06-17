@@ -10,7 +10,7 @@ import {subjects,levelOfEducation,classGroupsList} from '../../data/data'
 import 'aos/dist/aos.css'
 import styles from '../AuthForm/authForm.module.scss'
 
-const TutorInfoForm= ({formType, setFormType})=> {
+const TutorInfoForm= ({formType, setFormType, isEditProfileForm})=> {
     const [nearAroundLocations,setNearAroundLocations]=useState([]);
     const [district,setDistrict]=useState();
     const [state,setState]=useState();
@@ -29,28 +29,30 @@ const TutorInfoForm= ({formType, setFormType})=> {
 
     useEffect(()=>{
         if(isInfoCaptured){
-            setFormType('tutorFeeDetailForm')
+            if(isEditProfileForm){
+                setFormType('tutorEditProfileForm2')
+            }else{
+                setFormType('tutorFeeDetailForm')
+            }
+            
         }
-    },[isInfoCaptured,setFormType])
+    },[isInfoCaptured,setFormType,isEditProfileForm])
 
     const onLevelOfEducationChange=(education) =>{
-        setHighestEducation(education[0].value);
+        setHighestEducation(education[0]);
         setLocalErrors(prev=>({...prev,highestEducationDropdwn:''}))
     }
     const onTeachingLocationChange=(locations)=> {
-        let arr=locations.map(location=>location.value);
-        setTeachingLocation(arr);
+        setTeachingLocation(locations);
         setLocalErrors(prev=>({...prev,teachingLocationDropdown:''}));
     }
     const onSubjectChange=(subjects)=>{
-        let arr=subjects.map(subject=>subject.value)
-        setSubjectList(arr);
+        setSubjectList(subjects);
         setLocalErrors(prev=>({...prev,subjectDropdown:''}));
     }
 
-    const onClassGroupsChange=(classeGroups)=>{
-        let arr=classeGroups.map(classGroup=>classGroup.value)
-        setClassGroups(arr);
+    const onClassGroupsChange=(classGroups)=>{
+        setClassGroups(classGroups);
         setLocalErrors(prev=>({...prev,classGroupDropdown:''}))
     }
 
@@ -76,41 +78,57 @@ const TutorInfoForm= ({formType, setFormType})=> {
             return
         }
         setIsLoading(true);
-        let formData=new FormData();
-        
-        formData.append('_id',user._id);
-        formData.append('aadharNumber',values.aadhar);
-        formData.append('teachingMode',teachingMode);
-        // values.pincode&&
-        formData.append('pincode',values.pincode);
-        formData.append('district',district);
-        formData.append('state',state);
-        teachingLocation.forEach(location=>{
-            formData.append('teachingLocation',location);
-        })
-        values.instituteName&&formData.append('instituteName',values.instituteName);
-        values.address&&
-            formData.append('address',values.address);
-        subjectList.forEach(subject=>{
-            formData.append('subjects[]',subject);
-        })
-        classGroups.forEach(classGroup=>{
-            formData.append('classGroups[]',classGroup);
-        })
-        formData.append('requirementOfCertificate',requirementOfCertificate);
-        requirementOfCertificate&&
-            formData.append('highestLevelOfEducation',highestEducation);
-        formData.append('isStepOneDone',true);
-        requirementOfCertificate&&
-            formData.append('educationCertificateFile',educationCertificateFile);
+        // let formData=new FormData();
+        const data = {
+            _id:user._id,
+            aadharNumber:values.aadhar,
+            teachingMode:teachingMode,
+            pincode:values.pincode,
+            discription:values.discription,
+            district:district,
+            state:state,
+            teachingLocation:teachingLocation,
+            instituteName:values.instituteName,
+            address:values.address,
+            subjects:subjectList,
+            classGroups:classGroups,
+            requirementOfCertificate:requirementOfCertificate,
+            highestLevelOfEducation:highestEducation,
+            isStepOneDone:true
+        };
+        // formData.append('_id',user._id);
+        // formData.append('aadharNumber',values.aadhar);
+        // formData.append('teachingMode',teachingMode);
+        // // values.pincode&&
+        // formData.append('pincode',values.pincode);
+        // formData.append('discription',values.discription);
+        // formData.append('district',district);
+        // formData.append('state',state);
+        // teachingLocation.forEach(location=>{
+        //     formData.append('teachingLocation',location);
+        // })
+        // values.instituteName&&formData.append('instituteName',values.instituteName);
+        // values.address&&
+        //     formData.append('address',values.address);
+        // subjectList.forEach(subject=>{
+        //     formData.append('subjects[]',subject);
+        // })
+        // classGroups.forEach(classGroup=>{
+        //     formData.append('classGroups[]',classGroup);
+        // })
+        // formData.append('requirementOfCertificate',requirementOfCertificate);
+        // requirementOfCertificate&&
+        //     formData.append('highestLevelOfEducation',highestEducation);
+        // formData.append('isStepOneDone',true);
+        // requirementOfCertificate&&
+        //     formData.append('educationCertificateFile',educationCertificateFile);
         try{
             const config = {
                 headers: {
-                    'content-type': 'multipart/form-data',
                     'x-auth-token':localStorage.getItem("token")
                 }
             };
-            const res = await axios.put(`${process.env.REACT_APP_API_URL}/teachers/update`,formData,config);
+            const res = await axios.put(`/api/teachers/update`,data,config);
             if(!res.data.error){
                 setUser(res.data.result);
                 setIsInfoCaptured(true);
@@ -176,20 +194,29 @@ const TutorInfoForm= ({formType, setFormType})=> {
         }
 
     }
-    const { values, errors, handleChange, handleSubmit, clearValue } = useForm(
+    const { values, errors, handleChange, handleSubmit, clearValue,setValues } = useForm(
         submitHandler,
         validationRules
     );
+    useEffect(()=>{
+        if(user&&isEditProfileForm){
+            setValues({...user})
+            setSubjectList(user.subjects);
+            setTeachingMode(user.teachingMode);
+            setTeachingLocation(user.teachingLocation)
+            setClassGroups(user.classGroups)
+        }
+    },[setValues,user,isEditProfileForm])
   return (
     <React.Fragment>
                 <motion.form initial={{opacity:0,x:-300}} animate={{opacity:1,x:0}} onSubmit={handleSubmit}>
-                    <h3>Few more steps</h3>
+                    <h3>{isEditProfileForm?'Edit Profile':`Few more steps`}</h3>
                     <div className={styles.inputContainer}>
 
 
         {/* =============================Aadhar Number Textbox=============================== */}
                         <div className={styles.inputHolder}>
-                            <label htmlFor='aadhar'>Aadhaar Number</label>
+                            <label htmlFor='aadhar'>Aadhaar Number (Optional)</label>
                             <input
                                 type="number"
                                 className={`${errors.aadhar? styles.validationError:styles.inputBox}`}
@@ -272,6 +299,8 @@ const TutorInfoForm= ({formType, setFormType})=> {
                                 onChange={onTeachingLocationChange}
                                 loading={areLocationsLoading}
                                 color="#2876A0"
+                                labelField='value'
+                                values={teachingLocation}
                             />
                             <div className={styles.errorMsg}>{localErrors.teachingLocationDropdown}</div>
                         </div>
@@ -312,12 +341,29 @@ const TutorInfoForm= ({formType, setFormType})=> {
                             <label>Select subjects you can teach</label>
                             <Select
                                 multi
+                                create
                                 options={subjects}
                                 onChange={onSubjectChange}
                                 color="#2876A0"
+                                labelField='value'
+                                values={subjectList}
                             />
                             <div className={styles.errorMsg}>{localErrors.subjectDropdown}</div>
                         </div>
+                {/* =================================Discription section===================================== */}
+                    <div className={styles.inputHolder}>
+                        <label htmlFor='discripton'>Discription (Optional)</label>
+                        <input
+                            type="text"
+                            className={`${errors.discription? styles.validationError:styles.inputBox}`}
+                            name="discription"
+                            id="discription"
+                            placeholder="A precise discription about you and your skills."
+                            value={values.discription || ""}
+                            onChange={handleChange}
+                        />
+                        <div className={styles.errorMsg}>{errors.discription}</div>
+                    </div>
                 {/* ========================== Class Groups Dropdown======================= */}
                         <div className={styles.dropdownHolder}>
                             <label>Select classes you can teach</label>
@@ -326,6 +372,8 @@ const TutorInfoForm= ({formType, setFormType})=> {
                                 options={classGroupsList}
                                 onChange={onClassGroupsChange}
                                 color="#2876A0"
+                                labelField='value'
+                                values={classGroups}
                             />
                             <div className={styles.errorMsg}>{localErrors.classGroupDropdown}</div>
                         </div>
@@ -362,6 +410,8 @@ const TutorInfoForm= ({formType, setFormType})=> {
                                 options={levelOfEducation} 
                                 onChange={onLevelOfEducationChange}
                                 color="#2876A0"
+                                labelField='value'
+                                values={highestEducation}
                             />
                             <div className={styles.errorMsg}>{localErrors.highestEducationDropdwn}</div>
                         </div>
@@ -376,6 +426,7 @@ const TutorInfoForm= ({formType, setFormType})=> {
                                 className={`${errors.address? styles.validationError:styles.inputBox}`}
                                 name='educationCertificateFile'
                                 id="educationCertificateFile"
+                                labelField='value'
                                 onChange={updateFileName}
                             />
                             <div className={styles.errorMsg}>{localErrors.certificateUpload}</div>
@@ -386,8 +437,8 @@ const TutorInfoForm= ({formType, setFormType})=> {
                                 <input
                                     type="submit"
                                     className={`${styles.inputBox}`}
-                                    value={isLoading?`Loading...`:`Proceed`}
-                                    disabled={isLoading}
+                                    value={isLoading||areLocationsLoading?`Loading...`:`Proceed`}
+                                    disabled={isLoading||areLocationsLoading}
                                 />
                         </div>
                     </div>                    

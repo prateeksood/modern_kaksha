@@ -39,7 +39,7 @@ const StudentVerifyEmailForm= ({formType, setFormType})=> {
                     'x-auth-token':localStorage.getItem("token")
                 }
             };
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/send-verification-email`,config);
+            const res = await axios.get(`/api/auth/send-verification-email`,config);
             if(!res.data.error){
                 setAlertMsg({message:'OTP sent successfully'});
             }
@@ -67,7 +67,7 @@ const StudentVerifyEmailForm= ({formType, setFormType})=> {
                         'x-auth-token':localStorage.getItem("token")
                     }
                 };
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/verify-email`,data,config);
+                const res = await axios.post(`/api/auth/verify-email`,data,config);
                 if(!res.data.error){
                     setRegisterationSuccess(true);
                 }

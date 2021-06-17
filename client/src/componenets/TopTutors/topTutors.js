@@ -15,13 +15,13 @@ const TopTutors= () => {
             maximumFees:500000,
             subjects:[],
             pageNumber:1,
-            pageSize:3
+            pageSize:6
         }
         const fetchTeachers=async ()=>{
             setIsLoading(true)
             try{
 
-                const res= await axios.post(`${process.env.REACT_APP_API_URL}/teachers/`,data);
+                const res= await axios.post(`/api/teachers/`,data);
                 if(!res.data.error){
                 setProfiles(res.data.result);
                 }
@@ -33,24 +33,24 @@ const TopTutors= () => {
                 setIsLoading(false)
         }
 
-        // const fetchStudents=async ()=>{
-        //     setIsLoading(true)
-        //     try{
+        const fetchStudents=async ()=>{
+            setIsLoading(true)
+            try{
 
-        //         const res= await axios.post(`${process.env.REACT_APP_API_URL}/students/`,data);
-        //         if(!res.data.error){
-        //             setProfiles(res.data.result);
-        //         }
-        //     }
-        //     catch(err){
-        //         setBannerMsg({message:`Something went wrong!`});
-        //         setIsLoading(false)
-        //     }
-        //         setIsLoading(false)
-        // }
+                const res= await axios.post(`/api/students/`,data);
+                if(!res.data.error){
+                    setProfiles(res.data.result);
+                }
+            }
+            catch(err){
+                setBannerMsg({message:`Something went wrong!`});
+                setIsLoading(false)
+            }
+                setIsLoading(false)
+        }
         if(user){
             if(user.accountType==='teacher'){
-                // fetchStudents();
+                fetchStudents();
             }else{
                 fetchTeachers();
             }
@@ -59,8 +59,8 @@ const TopTutors= () => {
     },[user]);
     return (
     <React.Fragment>
-    {(user&&user.accountType==='student')&&<div className={styles.topTutors} > 
-        <h2 className={styles.topTutorsTitle} >New Tutors</h2>
+    {user&&<div className={styles.topTutors} > 
+        <h2 className={styles.topTutorsTitle} >Recent Ads</h2>
         <div className={styles.profiles}>
             <div className={styles.cardHolder}>
                 {profiles.map((profile,i)=>(

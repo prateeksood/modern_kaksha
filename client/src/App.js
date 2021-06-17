@@ -16,15 +16,16 @@ import './App.module.scss'
 import Loader from './componenets/Loader/loader';
 import MsgBanner from './componenets/MsgBanner/msgBanner';
 import ContactUsForm from './componenets/ContactUsForm/contactUsForm';
+import AdminPanel from './componenets/AdminPanel/adminPanel';
 
 const App=()=> {
-  const [isLoading,setIsLoading]=useState(true);
-  useEffect(()=>{
-    window.scrollTo(0, 1);
-    window.setTimeout(()=>{
-      setIsLoading(false)
-    },1000)
-  },[])
+  const [isLoading,setIsLoading]=useState(false);
+  // useEffect(()=>{
+  //   window.scrollTo(0, 1);
+  //   window.setTimeout(()=>{
+  //     setIsLoading(false)
+  //   },1000)
+  // },[])
   return (
     <>
       {isLoading ?
@@ -59,8 +60,9 @@ const App=()=> {
             <Route exact path="/contact-us">
               <ContactUsForm/>
             </Route>
-
-
+            <Route exact path="/admin">
+              <AdminPanel/>
+            </Route>
             {/* =============================404========================== */}
             <Route >
               <ErrorPage/>

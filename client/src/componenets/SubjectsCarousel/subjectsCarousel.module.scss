@@ -13,7 +13,7 @@
     padding: 50px 0;
     width: 80%;
     margin: auto;
-    .arrow{
+    .arrow,.arrowMobile{
     font-size: 4em;
     cursor: pointer;
     }
@@ -24,14 +24,16 @@
     }
 }
 
-.arrow:hover{
+.arrow:hover,.arrowMobile:hover{
     svg{
         path{
             fill: $accentColor2;
         }
     }
 }
-    
+.arrowMobile{
+    display: none;
+}
 
 .cardHolder{
     display:flex;
@@ -107,8 +109,14 @@
     .arrow{
         display: none;
     }
+    .arrowMobile{
+        display: block;
+    }
 }
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 550px){
+    .carousel{
+        width: 100%;
+    }
     .card{
         height:300px;
         min-width:225px;
@@ -119,5 +127,11 @@
     }
     .cardTitle{
         font-size: 1.2em;
+    }
+    .card:hover{
+        background-color: #184b67;
+        .cardIcon{
+            font-size: 9em;
+        }
     }
 }

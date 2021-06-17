@@ -1,0 +1,497 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap");
+nav {
+  z-index: 5;
+  font-family: 'Dosis', sans-serif;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.burgerMenu {
+  text-align: center;
+  font-size: 2.5em;
+  display: none;
+  z-index: 12;
+}
+
+.closeBtn {
+  text-align: right;
+  padding: 20px;
+  font-size: 1.5em;
+  display: none;
+}
+
+.navBar {
+  width: 80%;
+  margin: auto;
+}
+
+.navLinkContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 60%;
+  margin: auto;
+  text-transform: uppercase;
+}
+
+.navLink {
+  font-weight: 700;
+  padding: 3px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.navLink a {
+  height: 100%;
+  width: 100%;
+  color: #272727;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.activeNavLink {
+  padding: 3px;
+  border-bottom: 2px solid #2876a0;
+}
+
+.activeNavLink a {
+  color: #2876a0;
+}
+
+.navLink:hover {
+  color: #F3F3F3;
+}
+
+.navLink:hover a {
+  color: #F3F3F3;
+}
+
+.activeNav, .hiddenNav {
+  display: block;
+}
+
+.thinNav {
+  width: 100%;
+  height: 70px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.burgerMenuThinNav {
+  background: #272727;
+  text-align: right;
+  padding-right: 30px;
+  font-size: 2.5em;
+  display: none;
+  z-index: 3;
+}
+
+.burgerMenuThinNav svg path {
+  fill: #F3F3F3;
+}
+
+.thinNavHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+  background: #272727;
+}
+
+.thinNavHolder .titleHolder {
+  width: 25%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #F3F3F3;
+  overflow: hidden;
+  padding-left: 10px;
+}
+
+.thinNavHolder .titleHolder img {
+  height: 100%;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.thinNavHolder .titleHolder img:hover {
+  -webkit-transform: scale(1.1) translateY(-2px);
+          transform: scale(1.1) translateY(-2px);
+}
+
+.thinNavHolder .thinNavTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5em;
+  color: #2876a0;
+  font-weight: 600;
+  text-shadow: 1px 5px 5px #969696;
+}
+
+.thinNavHolder .thinNavLinkContainer {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background: #272727;
+}
+
+.thinNavHolder .thinNavLinkContainer .profileLink {
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  background: #2876a0;
+  transition: all .5s;
+  color: #F3F3F3;
+}
+
+.thinNavHolder .thinNavLinkContainer .profileLink svg {
+  margin-right: 10px;
+}
+
+.thinNavHolder .thinNavLinkContainer .profileLink svg path {
+  fill: #F3F3F3;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.thinNavHolder .thinNavLinkContainer .profileLink:hover {
+  background: #F3F3F3;
+  color: #2876a0;
+}
+
+.thinNavHolder .thinNavLinkContainer .profileLink:hover svg path {
+  fill: #2876a0;
+}
+
+.thinNavHolder .thinNavLinkContainer .navLink {
+  height: 100%;
+  width: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.thinNavHolder .thinNavLinkContainer .navLink a {
+  color: #F3F3F3;
+}
+
+.thinNavHolder .thinNavLinkContainer div:hover {
+  color: #2876a0;
+}
+
+.thinNavHolder .thinNavLinkContainer div:hover a {
+  color: #2876a0;
+}
+
+.hiddenThinNav {
+  display: none;
+}
+
+.profileSubMenu {
+  width: 200px;
+  position: absolute;
+  right: 20px;
+  margin-top: 20px;
+}
+
+.profileSubMenu .triangleTip {
+  width: 20px;
+  height: 20px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #F3F3F3;
+  position: absolute;
+  right: 10px;
+  top: -20px;
+}
+
+.profileSubMenu .profileSubMenuItemHolder {
+  background-color: #F3F3F3;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  padding: 20px;
+}
+
+.profileSubMenu .subLink {
+  font-size: 1.2em;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px 0;
+  border-bottom: 2px solid #E0E0E0;
+  color: #2876a0;
+  cursor: pointer;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.profileSubMenu .subLink a {
+  color: #2876a0;
+}
+
+.profileSubMenu .subLink:hover {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.mobileOnlyNavLink {
+  display: none;
+}
+
+.errorBanner {
+  background-color: rgba(255, 0, 0, 0.6);
+  padding: 10px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 600;
+}
+
+.errorBanner div {
+  width: 95%;
+  text-align: center;
+  color: #F3F3F3;
+}
+
+.errorBanner span {
+  width: 5%;
+  height: 100%;
+  text-align: center;
+  color: #F3F3F3;
+  font-weight: 900;
+}
+
+.activeThinNavLink {
+  color: #2876a0;
+  font-size: 1.3em;
+  border-bottom: 1px solid #2876a0;
+}
+
+@media only screen and (max-width: 900px) {
+  .thinNav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+  .activeNavLink {
+    font-size: 2em;
+  }
+  .activeThinNavLink {
+    font-size: 2em;
+  }
+  .mobileOnlyNavLink {
+    display: block;
+    font-weight: 700;
+    padding: 3px;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    cursor: pointer;
+    color: #272727;
+    transition: all .5s;
+    padding: 15px 0;
+    -webkit-transition: all .6s;
+    transition: all .6s;
+  }
+  .mobileOnlyNavLink a {
+    color: #272727;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+  }
+  .mobileOnlyNavLink:hover {
+    color: #F3F3F3;
+  }
+  .mobileOnlyNavLink:hover a {
+    color: #F3F3F3;
+  }
+  .profileLink {
+    display: none;
+  }
+  .profileSubMenu {
+    display: none;
+  }
+  .thinNavHolder .thinNavTitle {
+    font-size: 1em;
+  }
+  .thinNavHolder .thinNavLinkContainer {
+    width: 50%;
+  }
+  .thinNavHolder .titleHolder {
+    width: 50%;
+    padding-left: 20px;
+  }
+  .thinNavHolder .titleHolder img {
+    height: 50%;
+  }
+  .nav {
+    width: 100%;
+    height: 100vh;
+    background-image: -webkit-gradient(linear, left bottom, right top, from(#555759), color-stop(#515e6a), color-stop(#4a667c), color-stop(#3e6e8e), to(#2876a0));
+    background-image: linear-gradient(to right top, #555759, #515e6a, #4a667c, #3e6e8e, #2876a0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+  .navBar {
+    width: 100%;
+  }
+  .navLinkContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding-bottom: 70px;
+  }
+  .navLinkContainer .navLink {
+    padding: 15px 0;
+    -webkit-transition: all .6s;
+    transition: all .6s;
+  }
+  .burgerMenu, .burgerMenuThinNav {
+    display: block;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    padding-right: 30px;
+  }
+  .burgerMenu svg path, .burgerMenuThinNav svg path {
+    -webkit-transition: all .6s;
+    transition: all .6s;
+  }
+  .burgerMenu svg:hover path, .burgerMenuThinNav svg:hover path {
+    fill: #2876a0;
+  }
+  .activeNav {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    -webkit-transition: all 1s;
+    transition: all 1s;
+    width: 100%;
+    height: 100vh;
+    background-image: -webkit-gradient(linear, left bottom, right top, from(#555759), color-stop(#515e6a), color-stop(#4a667c), color-stop(#3e6e8e), to(#2876a0));
+    background-image: linear-gradient(to right top, #555759, #515e6a, #4a667c, #3e6e8e, #2876a0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+  .hiddenNav {
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    width: 100%;
+    height: 100vh;
+    background-image: -webkit-gradient(linear, left bottom, right top, from(#555759), color-stop(#515e6a), color-stop(#4a667c), color-stop(#3e6e8e), to(#2876a0));
+    background-image: linear-gradient(to right top, #555759, #515e6a, #4a667c, #3e6e8e, #2876a0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .activeNavLink {
+    color: #F3F3F3;
+    border: 0;
+  }
+  .activeNavLink a {
+    color: #F3F3F3;
+  }
+  .activeThinNavLink {
+    padding: 3px;
+    border-bottom: 0;
+  }
+  .activeThinNavLink a {
+    color: #2876a0;
+  }
+  .navLink:hover {
+    color: #F3F3F3;
+    border: 0;
+  }
+  .closeBtn {
+    display: block;
+    text-align: right;
+    margin-right: 20px;
+  }
+  .closeBtn svg {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    cursor: pointer;
+    font-size: 1.5em;
+  }
+  .closeBtn svg path {
+    -webkit-transition: all .6s;
+    transition: all .6s;
+  }
+  .closeBtn svg:hover path {
+    fill: #F3F3F3;
+  }
+}
+/*# sourceMappingURL=nav.module.css.map */

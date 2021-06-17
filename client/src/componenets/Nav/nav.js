@@ -111,7 +111,7 @@ const Nav =() => {
               <div className={styles.navLink}><NavLink exact to="/contact-us" onClick={closeNav} activeClassName={styles.activeNavLink}>Contact Us</NavLink></div>
               {user?
                 <>
-                  <div className={styles.mobileOnlyNavLink}><NavLink exact to={`/profile/${user._id}`} onClick={closeNav}>{user.connectsLeft} Connects</NavLink></div>
+                  <div className={styles.mobileOnlyNavLink}><NavLink exact to={`/profile/${user._id}`} onClick={closeNav}>{user.connectsLeft} Credits</NavLink></div>
                   <div className={styles.mobileOnlyNavLink}><NavLink to={`/profile/${user._id}`} onClick={closeNav} activeClassName={styles.activeNavLink}>View Profile</NavLink></div>
                   {location.pathname!=='/auth'&&<div className={styles.mobileOnlyNavLink} onClick={logout}>Logout</div>}
                 </>
@@ -127,7 +127,10 @@ const Nav =() => {
     <>
       <motion.nav className={styles.thinNav} initial={{height:0,opacity:0}} animate={{height:'70px',opacity:1}} transition={{ duration: .2 }}>
         <div className={styles.thinNavHolder}>
-        <Link to="/" className={styles.titleHolder}><img src={logo}/> <div className={styles.thinNavTitle}>Delta Educators</div></Link>
+        <Link to="/" className={styles.titleHolder}>
+          <img src={logo}/> 
+          {/* <div className={styles.thinNavTitle}>Modern Kaksha</div> */}
+        </Link>
           <div className={isNavOpen?`${styles.activeNav} ${styles.navLinkContainer}`:`${styles.hiddenNav} ${styles.thinNavLinkContainer}`}>
               <div className={styles.closeBtn}><FontAwesomeIcon icon={faPlus} onClick={toggleNav}></FontAwesomeIcon></div>
               <div className={styles.navLink}><NavLink exact to="/" onClick={closeNav} activeClassName={styles.activeThinNavLink}>Home</NavLink></div>
@@ -136,7 +139,7 @@ const Nav =() => {
               <div className={styles.navLink}><NavLink exact to="/contact-us" onClick={closeNav} activeClassName={styles.activeThinNavLink}>Contact Us</NavLink></div>
               {user?
                 <>
-                  <div className={styles.mobileOnlyNavLink}><NavLink exact to={`/profile/${user._id}`} onClick={closeNav}>{user.connectsLeft} Connects</NavLink></div>
+                  <div className={styles.mobileOnlyNavLink}><NavLink exact to={`/profile/${user._id}`} onClick={closeNav}>{user.connectsLeft} Credits</NavLink></div>
                   <div className={styles.mobileOnlyNavLink}><NavLink to={`/profile/${user._id}`} onClick={closeNav} activeClassName={styles.activeThinNavLink}>View Profile</NavLink></div>
                   {location.pathname!=='/auth'&&<div className={styles.mobileOnlyNavLink} onClick={logout}>Logout</div>}
                 </>
@@ -161,7 +164,7 @@ const Nav =() => {
           <motion.div className={styles.profileSubMenu} initial={{opacity:0,y:-100}} animate={{opacity:1,y:0}}>
             <div className={styles.triangleTip}></div>
             <div className={styles.profileSubMenuItemHolder}>
-              <div className={styles.subLink}>{user.connectsLeft} Connects</div>
+              <div className={styles.subLink}>{user.connectsLeft} Credits</div>
               <div className={styles.subLink} onClick={toggleProfileSubMenu}><Link to={`/profile/${user._id}`}>View Profile</Link></div>
               {location.pathname!=='/auth'&&<div className={styles.subLink} onClick={logout}>Logout</div>}
             </div>

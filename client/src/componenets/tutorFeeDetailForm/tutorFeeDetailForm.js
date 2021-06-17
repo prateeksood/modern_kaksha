@@ -1,4 +1,4 @@
-import React,{useState,useContext} from "react";
+import React,{useState,useContext,useEffect} from "react";
 import {Redirect} from 'react-router-dom'
 import { userContext } from "../../context/userContext";
 import axios from 'axios'
@@ -8,7 +8,7 @@ import {motion} from 'framer-motion';
 import 'aos/dist/aos.css'
 import styles from '../AuthForm/authForm.module.scss'
 
-const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
+const TutorFeeDetailForm=({formType, setFormType,backUrl,isEditProfileForm})=> {
     const [isSubmited,setIsSubmited]=useState(false);
     const [feeDuration,setFeeDuration]=useState('monthly');
     const {setUser,setAlertMsg,userLoaded,user,setBannerMsg} = useContext(userContext);
@@ -30,7 +30,7 @@ const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
         };
         try{
             setIsLoading(true);
-            const res = await axios.put(`${process.env.REACT_APP_API_URL}/teachers/update`,data,{headers:{'x-auth-token':localStorage.getItem("token")}});
+            const res = await axios.put(`/api/teachers/update`,data,{headers:{'x-auth-token':localStorage.getItem("token")}});
             if(!res.data.error){
                 setUser(res.data.result);
                 setIsSubmited(true);
@@ -45,42 +45,40 @@ const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
         } 
         setIsLoading(false);
     };
-    const { values, errors, handleChange, handleSubmit} = useForm(
+    const { values, errors, handleChange, handleSubmit,setValues} = useForm(
         submitHandler,
         validationRules
     );
+    useEffect(()=>{
+        if(user&&isEditProfileForm){
+            setValues({...user})
+            setFeeDuration(user.feesPeriod)
+        }
+    },[setValues,user,isEditProfileForm])
     if(isSubmited&&!isLoading){
-        return(<Redirect to={backUrl||'/'}/>)
+        if(!isEditProfileForm){
+            alert(`Thank You for completing your registration. As a token of gratitude we are giving you 5 free credits and we have posted a free ad for you.`)
+        }
+        return(<Redirect to={backUrl||'/connect'}/>)
     }
     return (
         <React.Fragment>
         
                 <motion.form initial={{opacity:0,x:-300}} animate={{opacity:1,x:0}} onSubmit={handleSubmit} autoComplete="off">
-                    <h3>Fees Details</h3>
+                    <h3>{isEditProfileForm?'Edit Fee Details':'Fees Details'}</h3>
                     <div className={styles.inputContainer}>
                 {/* ============================Fee Duration Radio============================= */}
-                    <div className={styles.radioLabelHolder}><label htmlFor='feeDuration'>When would you like to collect the fees? </label></div>
+                    <div className={styles.radioLabelHolder}><label htmlFor='feeDuration'>When would you like to collect the fees from Modern Kaksha? </label></div>
                         <div className={styles.radioBtnHolder}>
                             <input
                                 type="radio"
                                 name="feeDuration"
-                                id="hourly"
-                                value="hourly"
-                                checked={feeDuration==='hourly'}
+                                id="weekly"
+                                value="weekly"
+                                checked={feeDuration==='weekly'}
                                 onChange={changeFeeDuration}
                             />
-                            <label htmlFor='hourly'>Hourly</label>
-                        </div>
-                        <div className={styles.radioBtnHolder}>
-                            <input
-                                type="radio"
-                                name="feeDuration"
-                                id="daily"
-                                value="daily"
-                                checked={feeDuration==='daily'}
-                                onChange={changeFeeDuration}
-                            />
-                            <label htmlFor='daily'>Daily</label>
+                            <label htmlFor='weekly'>Weekly</label>
                         </div>
                         <div className={styles.radioBtnHolder}>
                             <input
@@ -95,7 +93,7 @@ const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
                         </div>
                 {/* ===================================Fee Amount Textbox========================= */}
                         <div className={styles.inputHolder}>
-                            <label htmlFor='feeAmount'>{feeDuration} Fee Amount (INR)</label>
+                            <label htmlFor='feeAmount'>Per Class Fee Amount (INR)</label>
                             <input
                                 type="number"
                                 className={`${errors.feeAmount? styles.validationError:styles.inputBox}`}
@@ -109,7 +107,7 @@ const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
                         </div>
 
                 {/* ===================================Account No. Textbox============================ */}
-                        <div className={styles.inputHolder}>
+                        {/* <div className={styles.inputHolder}>
                             <label htmlFor='accountNumber'>Your Account Number</label>
                             <input
                                 type="number"
@@ -121,9 +119,9 @@ const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
                                 onChange={handleChange}
                             />
                             <div className={styles.errorMsg}>{errors.accountNumber}</div>
-                        </div>
+                        </div> */}
                 {/* ====================================Confirm Account textbox=========================== */}
-                        <div className={styles.inputHolder}>
+                        {/* <div className={styles.inputHolder}>
                             <label htmlFor='confirmAccountNumber'>Confirm Account Number</label>
                             <input
                                 type="number"
@@ -135,9 +133,9 @@ const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
                                 onChange={handleChange}
                             />
                             <div className={styles.errorMsg}>{errors.confirmAccountNumber}</div>
-                        </div>
+                        </div> */}
                 {/* =====================================Ifsc textbox====================================== */}
-                        <div className={styles.inputHolder}>
+                        {/* <div className={styles.inputHolder}>
                             <label htmlFor='ifscCode'>IFSC code</label>
                             <input
                                 type="text"
@@ -149,9 +147,9 @@ const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
                                 onChange={handleChange}
                             />
                             <div className={styles.errorMsg}>{errors.ifscCode}</div>
-                        </div>
+                        </div> */}
                 {/* ===================================Account Holder Name=================================== */}
-                        <div className={styles.inputHolder}>
+                        {/* <div className={styles.inputHolder}>
                             <label htmlFor='accountHolder'>Account Holder's Name</label>
                             <input
                                 type="text"
@@ -163,7 +161,7 @@ const TutorFeeDetailForm=({formType, setFormType,backUrl})=> {
                                 onChange={handleChange}
                             />
                             <div className={styles.errorMsg}>{errors.accountHolder}</div>
-                        </div>
+                        </div> */}
                 
                         <div className={styles.inputHolder}>
                                 <input

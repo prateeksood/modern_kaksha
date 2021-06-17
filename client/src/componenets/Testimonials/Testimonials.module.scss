@@ -1,0 +1,113 @@
+
+$blue:#2876A0;
+$white:#F3F3F3;
+$grey:#DDD;
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+.container{
+    min-height:100vh;
+    width:100%;
+    background-image: url("../../resources/images/wave-blue.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    .title{
+        text-align: center;
+        padding: 20px 0;
+    }
+
+}
+.containerBlack{
+    min-height:100vh;
+    width:100%;
+    background-image: url("../../resources/images/wave-black.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    .title{
+        text-align: center;
+        padding: 20px 0;
+    }
+}
+.testimonialsContainer{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    .card{
+        height:60vh;
+        width:90vw;
+        max-width: 300px;
+        background:$white;
+        padding:10px;
+        border-radius: 10px;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        align-items:center;
+        margin:50px;
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        transition: all 1s;
+        .mainContent{
+            background:$grey;
+            margin-bottom: 0;
+            height:50vh;
+            padding: 30px;
+            border-radius:5px;
+            text-align: center;
+            line-height:1.8em;
+            z-index:2;
+            span{
+                font-weight: 900;
+                font-size:1.5em;
+                line-height: 1em;
+            }
+        }
+        .arrow{
+            background:$grey;
+            height:40px;
+            width:40px;
+            position:absolute;
+            transform: translateY(46vh) rotate(45deg);
+            z-index: 1;
+
+        }
+        .userDetails{
+            display:flex;
+            align-items:center;
+            font-weight: 700;
+            font-size: 1.3em;
+            transition: all 1s;
+            .userName{
+                margin-right:10px;
+                
+            }
+            .userType{
+                color:$blue;
+            }
+        }
+
+    }
+    .card:hover{
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30);
+        transform: scale(1.02);
+        .userDetails{
+            font-size: 1.4em;
+        }
+    }
+}
+@media only screen and (max-width: 900px){
+    .testimonialsContainer{
+        .card{
+            margin:50px auto;
+        }
+    }
+}

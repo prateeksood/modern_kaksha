@@ -16,14 +16,17 @@
 }
 .sliderContent{
     width:90%;
-    margin: auto;
-    padding:100px 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding:50px 0;
     margin-top:90px;
 }
 .tagline{
     font-size: 7em;
-    font-family: 'Dosis', sans-serif;
-    font-weight: 600;
+    // font-family: serif;
+    font-family: 'Noto Serif', serif;
+    text-align: center;
+    // font-weight: 900;
 }
 
 .leadText{
@@ -72,6 +75,7 @@
 }
 @media only screen and (max-width: 900px){
     .sliderContainer{
+        padding-top:20vh;
         .background{
             display:none;
         }
@@ -89,22 +93,14 @@
     .downIcon{
         display: none;
     }
-    .tagline{
-        font-size: 4em;
-        margin-bottom: 30px;
-        color:$lightGrey;
+    .sliderContent{
+        margin-top:auto;
     }
-    
-    .leadText{
-        font-size: 1.5em;
-    }
-}
-@media only screen and (max-width: 900px){
-    
     .tagline{
-        font-size: 4.3em;
-        margin-bottom: 20px;
+        font-size: 3em;
+        margin-bottom: 100px;
         text-align: center;
+        color:$lightGrey;
     }
     
     .leadText{

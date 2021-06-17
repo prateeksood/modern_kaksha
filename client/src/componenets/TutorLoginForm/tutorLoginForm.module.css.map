@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "tutorLoginForm.module.scss"
+    ],
+    "names": [],
+    "file": "tutorLoginForm.module.css"
+}

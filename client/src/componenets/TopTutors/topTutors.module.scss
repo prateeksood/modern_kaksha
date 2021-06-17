@@ -17,6 +17,7 @@
 }
 .cardHolder{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     padding:20px;
 }
@@ -25,5 +26,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .profiles{
+        width:100%;
     }
 }

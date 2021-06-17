@@ -1,0 +1,325 @@
+$white:#F3F3F3;
+$black:#272727;
+$blue:#2876A0;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.adminPage{
+    display:flex;
+    min-height:100vh;
+    width:98.9vw;
+    .left{
+        width: 30vw;
+        background:$black;
+        width:300px;
+
+        .menuHeading{
+            padding:10px;
+            text-align:center;
+            color:$white;
+            font-size:2em;
+            color:$black;
+            background: $white;
+            border:10px solid $black;
+        }
+        .menuItemsholder{
+            text-align:center;
+            display:flex;
+            flex-direction:column;
+            .menuItem{
+                padding:10px;
+                font-size:1.5em;
+                color:$white ;
+                border-bottom:1px solid $black;
+                font-weight:500;
+                transition:all .5s;
+                cursor:pointer;
+            }
+            .menuItem:hover{
+                background:#494747;
+            }
+        }
+
+    }
+    .right{
+        width:80vw;
+        padding:20px;
+        background:$white;
+        .heading{
+            text-align: center;
+            font-size:5em;
+        }
+        .summaryMainSection{
+            background:$white;
+            padding:10px;
+            display:flex;
+            flex-wrap: wrap;
+            align-items:center;
+            justify-content:center;
+            .card{
+                height:300px;
+                width:500px;
+                background:steelblue;
+                margin:10px;
+                text-align:center;
+                display:flex;
+                flex-direction: column;
+                justify-content:space-between;
+                color:$white;
+                .cardNumber{
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    font-size:7em;
+                    color:$white;
+                    height:60%;
+                }
+                .cardTitle{
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    padding:20px;
+                    height: 40%;
+                    color:$white;
+                    font-size: 2em;
+                }
+                
+
+            }
+            #card1{
+                background: #4b6cb7;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                
+            }
+            #card2{
+                background: #C04848;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #480048, #C04848);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #480048, #C04848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    
+            }
+            #card3{
+                background: #1D976C;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #93F9B9, #1D976C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                   
+            }
+            #card4{
+                background: #42275a;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #734b6d, #42275a);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            }
+            #card5{
+                background: #ff4b1f;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #ff9068, #ff4b1f);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #ff9068, #ff4b1f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            }
+        }
+
+
+        .studentsMainSection{
+            display:flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+
+            .searchHolder{
+                width:100%;
+                display:flex;
+                justify-content:flex-end;
+                height:100px;
+                padding:20px;
+                .searchInput{
+                    margin-right: 20px;
+                    border-radius: 5px;
+                    outline: none;
+                    border:1px solid $blue;
+                    height:35px;
+                    width:200px;
+                    padding:0 10px;
+                    color:$blue;
+                    font-weight: 600;;
+                }
+                .searchBtn{
+                    border-radius: 10px;
+                    width:100px;
+                    outline:none;
+                    border:1px solid $blue;
+                    background:$blue;
+                    color:$white;
+                    height:35px;
+                    padding: 5px 20px;
+                    cursor:pointer;
+                    transition:all 0.5s;
+                }
+                .searchBtn:hover{
+                    box-shadow: 1px 1px 5px black;
+                    transform:scale(.95);
+                }
+            }
+            .studentsMainTable{
+                display:flex;
+                width:100%;
+                margin:50px 0;
+                flex-direction: column ;
+                .recordHead{
+                    width:100%;
+                    display: flex;
+
+                    div{
+                        font-size: 1.4em;
+                        font-weight: 600;
+                        border:1px solid $white;
+                        padding:10px;
+                        text-align:center;
+                        background-color:$blue;
+                        color:$white;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+
+                    }
+                    .serialNo{
+                        width:10%;
+                    }
+                    .name{
+                        width:15%;
+                    }
+                    .date{
+                        width:20%;
+                    }
+                    .studyingMode{
+                        width:20%;
+                    }
+                    .contact{
+                        width:15%;
+                    }
+                    .action{
+                        width:20%;
+                    }
+                }
+                .record{
+                    width:100%;
+                    display: flex;
+
+                    div{
+                        border:1px solid $blue;
+                        padding:5px;
+                        text-align:center;
+                        background-color: #fff;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+
+                    }
+                    
+                    .serialNo{
+                        width:10%;
+                    }
+                    .name{
+                        width:15%;
+                    }
+                    .date{
+                        width:20%;
+                    }
+                    .studyingMode{
+                        width:20%;
+                    }
+                    .contact{
+                        width:15%;
+                    }
+                    .action{
+                        width:20%;
+                        padding:20px;
+                        span{
+                            padding:5px 10px;
+                            background:$blue;
+                            border-radius: 50px;
+                            color:white;
+                            cursor: pointer;
+                            transition:all .5s;
+                            margin: 0 5px;
+                        }
+                        span:hover{
+                            box-shadow: 1px 1px 5px black, inset 1px 1px 5px grey;
+                        }
+                        .activeTag{
+                            background:green;
+                            
+                        }
+                        .InactiveTag{
+                            background:red;
+                        }
+                        .viewBtn{
+                            background:$blue;
+                            a{
+                                color:white;
+                            }
+                        }
+                    }
+                }
+            }
+            .loadMoreBtn{
+                padding:10px 20px;
+                color:$white;
+                background:$blue;
+                border-radius: 50px;
+                div{
+                    color:$white;
+                }
+            }
+            .loading{
+                font-size: 3em;
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width:900px){
+
+    .adminPage{
+        flex-direction: column;
+        width: 100vw;
+        .left{
+            width:100%;
+        }
+        .right{
+            width:100%;
+            .heading{
+            font-size:3em;
+        }
+        .studentsMainSection{
+            .searchHolder{
+                justify-content:center ;
+                align-items:center;
+            }
+            .studentsMainTable{
+                flex-direction: column;
+                .recordHead{
+                    flex-direction: column;
+                    div{
+                        overflow: hidden;
+                        width: 100% !important;
+                    }
+                }
+                .record{
+                    margin-bottom: 20px;
+                    flex-direction: column;
+                    div{
+                        overflow: hidden;
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+}

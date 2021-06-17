@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap");
+.card {
+  min-height: 400px;
+  width: 300px;
+  background: #2876A0;
+  -webkit-box-shadow: -20px -20px 60px #226488,  20px 20px 60px #2e88b8;
+          box-shadow: -20px -20px 60px #226488,  20px 20px 60px #2e88b8;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  margin: 20px;
+}
+
+.profilePicHolder {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid #2876a0;
+  overflow: hidden;
+}
+
+.profilePicHolder img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.profilePicHolder:hover img {
+  -webkit-transform: scale(1.1) translateY(10px);
+          transform: scale(1.1) translateY(10px);
+}
+
+.profileName {
+  font-size: 1.5em;
+  color: #F3F3F3;
+}
+
+.profileLocation {
+  color: #272727;
+  font-size: .9em;
+  padding: 5px 0;
+}
+
+.profileLocation svg {
+  margin-right: 10px;
+}
+
+.profileLocation svg path {
+  color: #272727;
+}
+
+.profileIntro {
+  margin-top: 5px;
+  font-size: 0.6em;
+  padding: 5px;
+  color: #F3F3F3;
+}
+
+.hireBtn {
+  font-size: 1em;
+  padding: 10px 30px;
+  margin: 10px 0;
+  background: #272727;
+  color: #F3F3F3;
+  border: 0px;
+  width: 100%;
+  cursor: pointer;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  text-align: center;
+}
+
+.hireBtnDisabled {
+  font-size: 1em;
+  padding: 10px 30px;
+  margin: 10px 0;
+  background: #272727;
+  color: #F3F3F3;
+  border: 0px;
+  width: 100%;
+  cursor: not-allowed;
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  text-align: center;
+}
+
+.hireBtn:hover {
+  -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
+}
+
+.disabledHireBtn {
+  cursor: not-allowed;
+  background: #21991f;
+  color: #F3F3F3;
+}
+
+.skillsSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.skillsSection .profileSkill {
+  margin: 5px;
+  border: 1px solid #272727;
+  font-size: .6em;
+  padding: 2px 5px;
+  text-transform: capitalize;
+}
+
+.locationMarker {
+  font-size: 2em;
+}
+
+.locationsSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.locationsSection .location {
+  margin: 5px;
+  background-color: #272727;
+  color: #F3F3F3;
+  font-size: .6em;
+  padding: 2px 5px;
+}
+
+.locationsSection .location svg {
+  margin-right: 2px;
+}
+
+.locationsSection .location svg path {
+  color: #F3F3F3;
+}
+
+.discriptionBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #F3F3F3;
+  font-size: .7em;
+  text-align: center;
+}
+
+.classesHolder {
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.classesHolder div {
+  color: #F3F3F3;
+  font-size: .7em;
+  background-color: #272727;
+  padding: 5px;
+  border: 1px solid #2876a0;
+}
+
+.feesAmountHolder {
+  width: 300px;
+  bottom: 0;
+  padding: 10px 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.feesAmountHolder div {
+  color: #F3F3F3;
+  width: 100%;
+}
+
+.feesAmountHolder div svg {
+  margin-right: 5px;
+}
+
+.feesAmountHolder div svg path {
+  color: #F3F3F3;
+}
+
+@media only screen and (max-width: 900px) {
+  .card {
+    margin: 20px 0;
+  }
+}
+/*# sourceMappingURL=userCard.module.css.map */
