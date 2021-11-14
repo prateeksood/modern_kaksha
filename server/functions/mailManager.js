@@ -1,24 +1,24 @@
 const nodemailer = require("nodemailer");
-
+require("dotenv").config();
 const sendConnectionEmail = async (connection, email) => {
-    try {
-        // let testAccount = await nodemailer.createTestAccount();
-        let transporter = nodemailer.createTransport({
-            host: "smtpout.secureserver.net",
-            port: 465,
-            secure: true,
-            auth: {
-                user: "support@modernkaksha.com",
-                pass: "Obeygod@1",
-            },
-            tls: { rejectUnauthorized: false },
-        });
+  try {
+    // let testAccount = await nodemailer.createTestAccount();
+    let transporter = nodemailer.createTransport({
+      host: "smtpout.secureserver.net",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_ID,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+      tls: { rejectUnauthorized: false },
+    });
 
-        let info = await transporter.sendMail({
-            from: '"Modern Kaksha" <support@modernkaksha.com>',
-            to: email,
-            subject: `Connected to ${connection.name}`,
-            html: `
+    let info = await transporter.sendMail({
+      from: '"Modern Kaksha" <support@modernkaksha.com>',
+      to: email,
+      subject: `Connected to ${connection.name}`,
+      html: `
             <div class="Stage_stageInner__3qmQ4 stageInner">
             <div class="undefined stageContainer" style="background-color: rgb(248, 248, 249);">
                 <div class="undefined stageContent"
@@ -870,14 +870,14 @@ const sendConnectionEmail = async (connection, email) => {
                 </div>
             </div>
             `,
-        });
+    });
 
-        console.log("Message sent: %s", info.messageId);
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-        return true;
-    } catch (err) {
-        console.log(err);
-        return false;
-    }
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
 };
 module.exports = { sendConnectionEmail };
