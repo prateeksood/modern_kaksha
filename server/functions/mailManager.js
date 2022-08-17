@@ -2,11 +2,11 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 const sendConnectionEmail = async (connection, email) => {
   try {
-    // let testAccount = await nodemailer.createTestAccount();
+    let testAccount = await nodemailer.createTestAccount();
     let transporter = nodemailer.createTransport({
-      host: "smtpout.secureserver.net",
-      port: 465,
-      secure: true,
+      host: process.env.SMTP_SERVER,
+      port: process.env.SMTP_PORT,
+      secure: false,
       auth: {
         user: process.env.EMAIL_ID,
         pass: process.env.EMAIL_PASSWORD,

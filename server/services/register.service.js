@@ -157,14 +157,14 @@ const sendEmail = async (otp, email) => {
   try {
     // let testAccount = await nodemailer.createTestAccount();
     let transporter = nodemailer.createTransport({
-      host: 'smtpout.secureserver.net',
-      port: 465,
-      secure: true,
+      host: process.env.SMTP_SERVER,
+      port: process.env.SMTP_PORT,
+      secure: false,
       auth: {
         user: process.env.EMAIL_ID,
-        pass: process.env.EMAIL_PASSWORD
+        pass: process.env.EMAIL_PASSWORD,
       },
-      tls: { rejectUnauthorized: false }
+      tls: { rejectUnauthorized: false },
     });
 
 
